@@ -22,6 +22,12 @@ body {
   background: #ADD8E6;
 }
 
+table {
+	text-align: center;
+	border-spacing: 10px;
+	font-weight:bold;
+}
+
 .player1{
 	background-image:url('../../media/images/red.png');
 }
