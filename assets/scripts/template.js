@@ -207,7 +207,22 @@ function endGame(){
 		alert("You pressed Cancel!");
 	} 
 }
-
+function startGame() {
+	$(document).ready(function() {
+				draw_grid(6,7);
+				displayTabs();
+				
+				$('.cell').click(
+				function(){
+					$('.cell').off('click');
+					id = $(this).attr('id');
+					column = id.substring(1,id.indexOf("r"));
+					var row=findRow(column, player);
+					setChecker(row, column, $('#player').data( 'player'));
+				}
+				);
+			});
+}
 function displayTabs() {
 	var tabPanes = $('div.tabPanel > div');
 	$('div.tabPanel ul.tabs a').click(function () {
