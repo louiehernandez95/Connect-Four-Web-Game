@@ -1,0 +1,82 @@
+#left{
+float:left;
+}
+#right{
+float:left;
+}
+
+#board{
+float:left;
+}
+#pnum{
+	width:100px;
+	height:100px;
+}
+#pname{
+	width:100%;
+	text-align:center;
+}
+body {
+  font: 13px/20px Verdana, sans-serif;
+  color: #404040;
+  background: #ADD8E6;
+}
+
+.player1{
+	background-image:url('../../media/images/red.png');
+}
+.player2{
+	background-image:url('../../media/images/black.png');
+}
+.free{
+	background-image:none;
+}
+
+.row{
+	clear:both;/* deals with column floats */
+}
+.row:first-child > .cell{
+	border-top:1px solid #000;
+}
+.cell{
+	border-right:1px solid #000;/* outline grid for visibility*/
+	border-bottom:1px solid #000;
+	float:left; /* or display inline - either would probably work. */
+	cursor:pointer;
+	height:100px;
+	width:100px; 
+}
+.cell:first-child {
+	border-left:1px solid #000;
+}
+.black_checker {
+	background-image:url('../../media/images/black.png');
+}
+
+.red_checker{
+	background-image:url('../../media/images/red.png');
+}
+
+/* TABS */
+ul.tabs{
+	list-style:none;
+	margin:0;
+	padding:0}
+ul.tabs li{
+	display:inline
+	}
+ul.tabs li a{
+	background-color:#999;
+	color:#FFF;
+	padding:3px 5px;
+	text-decoration:none}
+ul.tabs li a.selected{
+	background-color:#000}
+ul.tabs li a:hover{
+	background-color:#333
+	}
+div.tabpanel > div{
+	border:1px solid #000;
+	margin-top:2px;
+	padding:5px
+	}
