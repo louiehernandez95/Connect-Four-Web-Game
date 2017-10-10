@@ -56,6 +56,11 @@ body {
 .red_checker{
 	background-image:url('../../media/images/red.png');
 }
+#audio_buttons {
+     position: absolute; 
+	 top: 0; 
+	 right: 0;
+ }
 
 /* TABS */
 ul.tabs{

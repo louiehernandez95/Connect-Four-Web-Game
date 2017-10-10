@@ -41,6 +41,14 @@
 				<div id='resetButton'>
 					<input onclick="draw_grid(6,7)" id="newGameButton" type="Submit" value="New Game" />
 				</div>
+				<audio id="myTune">
+					<source src="media/audio/theme.wav">
+				</audio>
+				<div id="audio_buttons">
+				<button onclick="document.getElementById('myTune').play()">Play Music</button>
+				<button onclick="document.getElementById('myTune').pause()" >Pause Music</button>
+				<button onclick="document.getElementById('myTune').pause(); document.getElementById('myTune').currentTime = 0;document.getElementById('myTune').play()">Restart</button>
+				</div>
 			</div>
 		</div>
 
