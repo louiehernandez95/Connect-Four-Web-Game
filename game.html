@@ -32,14 +32,71 @@
 						</ul>
 					</div>
 					<div id="scoresPanel">
-						<p>High scores would go here...</p>
+					    <H2>HighScores:</H2>
+						<hr>
+					<table>
+						<tr>
+							<th>Ranking</th>
+							<th> Name</th>
+							<th> Won</th>
+							<th> Lost</th>
+						</tr>
+						<tr>
+                            <td><font color="yellow">1</font></td>
+							<td><font color="yellow">Mart</font></td>
+							<td><font color="yellow">10</font></td>
+							<td><font color="yellow">2</font></td>
+							
+						</tr>
+						<tr>
+							<td><font color="white">2</font></td>
+							<td><font color="white">Jeff</font></td>
+							<td><font color="white">9</font></td>
+							<td><font color="white">3</font></td>
+						</tr>
+						<tr>
+							<td><font color="brown">3</font></td>
+							<td><font color="brown">James</font></td>
+							<td><font color="brown">9</font></td>
+							<td><font color="brown">4</font></td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>Scott</td>
+							<td>8</td>
+							<td>4</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>Lisa</td>
+							<td>7</td>
+							<td>5</td>
+						<tr>
+							<td>6</td>
+							<td>Donna</td>
+							<td>7</td>
+							<td>6</td>
+						</tr>
+						<tr>
+						    <td>7</td>
+							<td>Jun</td>
+							<td>6</td>
+							<td>7</td>
+						</tr>
+						<tr>
+							<td>8</td>
+							<td>John</td>
+							<td>5</td>
+							<td>6</td>
+						</tr>
+					</table>
 					</div>
 					<div id="chatPanel">
 						<p>A Chat may go here...</p>
 					</div>
 				</div>				
 				<div id='resetButton'>
-					<input onclick="startGame() " id="newGameButton" type="Submit" value="New Game" />
+					<input onclick="draw_grid(6,7)" id="newGameButton" type="Submit" value="New Game" />
 				</div>
 				<audio id="myTune">
 					<source src="media/audio/theme.wav">
@@ -51,13 +108,26 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
 		<script src="assets/scripts/template.js"></script>
 
 		<script>
-			startGame();
+			$(document).ready(function() {
+				draw_grid(6,7);
+				displayTabs();
+				
+				$('.cell').click(
+				function(){
+					$('.cell').off('click');
+					id = $(this).attr('id');
+					column = id.substring(1,id.indexOf("r"));
+					var row=findRow(column, player);
+					setChecker(row, column, $('#player').data( 'player'));
+				}
+				);
+			});
 		</script>
 	</body>
 </html>
