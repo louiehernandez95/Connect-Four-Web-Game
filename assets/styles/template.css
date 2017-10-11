@@ -16,6 +16,10 @@ float:left;
 	width:100%;
 	text-align:center;
 }
+#scroll{
+    height:150px; 
+    overflow:hidden;
+}
 body {
   font: 13px/20px Verdana, sans-serif;
   color: #404040;
@@ -27,7 +31,12 @@ table {
 	border-spacing: 10px;
 	font-weight:bold;
 }
-
+th{
+  width:60px;
+}
+td{
+ width:60px;
+}
 .player1{
 	background-image:url('../../media/images/red.png');
 }
