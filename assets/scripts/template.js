@@ -7,6 +7,8 @@ var PLAY_BOARD = {          // player's current board status, 1 bit per square, 
 var CURR_PLAYER = 1;  // current player
 var NUM_COLS = 7;   // board dimansions: number of columns
 var NUM_ROWS = 6;      // board dimaensions: number of rows
+var swooshSound;
+var themeMusic = new sound("media/audio/theme.wav");
 
 /* function to create board
 /* renamed and added parameters to create 
@@ -49,6 +51,8 @@ function changePlayer(){
 
 function setChecker(row, column, player){
 	PLAY_BOARD[player] = setBit64(PLAY_BOARD[player],row, column);  // call to update current board status
+	swooshSound = new sound("media/audio/swoosh.wav");
+	swooshSound.play();
 	animateChecker(column, player);
 }
 
@@ -101,7 +105,32 @@ function findRow(column, player) {
 
 	return(Math.log(temp+1)/Math.LN2);   // next avail row is next sig bit NOT used!
 }
-
+function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "loop");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function(){
+        this.sound.play();
+    }
+    this.stop = function(){
+        this.sound.pause();
+    }
+}
+function playTheme() {
+	themeMusic.play();
+}
+function pauseTheme() {
+	themeMusic.load();
+	themeMusic.pause();
+}
+function restartTheme() {
+	themeMusic.pause(); 
+	themeMusic.currentTime = 0;
+	themeMusic.play();
+}
 /**
 * Handles the animation of the checker down the board.
 */
@@ -124,7 +153,9 @@ function animateChecker(column, player){
 				}else{
 					changePlayer();
 					$('.cell').click(function(){
+						
 						$('.cell').off('click');
+						
 						id = $(this).attr('id');
 						column = id.substring(1,id.indexOf("r"));
 						var row=findRow(column, player);
@@ -137,6 +168,7 @@ function animateChecker(column, player){
 		}
 	}
 	swap(NUM_ROWS-1);
+	
 }
 
 function setBit64(word, row, column) {
@@ -194,6 +226,7 @@ function shiftRight64(word, nshift) {
 
 function endGame(){
 	var player = (CURR_PLAYER == 1)?2:1;
+	
 	if (confirm("Player "+player+" wins! New game?")){
 		draw_grid(6,7);
 		$('.cell').click(function(){
@@ -211,7 +244,6 @@ function startGame() {
 	$(document).ready(function() {
 				draw_grid(6,7);
 				displayTabs();
-				
 				$('.cell').click(
 				function(){
 					$('.cell').off('click');
