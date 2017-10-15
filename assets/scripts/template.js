@@ -118,20 +118,6 @@ function sound(src) {
     }
 }
 
-function playTheme() {
-    themeMusic.play();
-}
-
-function pauseTheme() {
-    themeMusic.load();
-    themeMusic.pause();
-}
-
-function restartTheme() {
-    themeMusic.pause();
-    themeMusic.currentTime = 0;
-    themeMusic.play();
-}
 /**
  * Handles the animation of the checker down the board.
  */
@@ -155,9 +141,7 @@ function animateChecker(column, player) {
                 } else {
                     changePlayer();
                     $('.cell').click(function() {
-
                         $('.cell').off('click');
-
                         id = $(this).attr('id');
                         column = id.substring(1, id.indexOf("r"));
                         var row = findRow(column, player);
@@ -165,8 +149,8 @@ function animateChecker(column, player) {
                     });
                 }
             }
-        } else {
-            alert("That column is full!");
+        }  else {
+            
         }
     }
     swap(NUM_ROWS - 1);
@@ -226,7 +210,6 @@ function shiftRight64(word, nshift) {
 
 function endGame() {
     var player = (CURR_PLAYER == 1) ? 2 : 1;
-
     if (confirm("Player " + player + " wins! New game?")) {
         draw_grid(6, 7);
         $('.cell').click(function() {
