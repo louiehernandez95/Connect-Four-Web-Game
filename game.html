@@ -1,136 +1,184 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Connect 4</title>
-		<link rel="stylesheet" type="text/css" href="assets/styles/template.css">
-	</head>
-	<body>
-	<nav> <ul>
-			<li class = "inactivenav">Welcome Guest</li>
+
+<head>
+    <title>Connect 4</title>
+    <link rel="stylesheet" type="text/css" href="assets/styles/template.css">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><img style="height:48px; margin-bottom:-4px;" src="media/images/connect_four_grid_mini.png" alt="Connect 4"></li>
+            <li class="inactivenav"> Welcome Guest</li>
             <li><a class="active" href="game.html">Game</a></li>
             <li><a href="leaderboard.html">Leaderboard</a></li>
-            <li><a href="Connect4rules.html">Rules</a></li>			
-			<li style="float:right"><a href="index.html">Account</a></li>
-			<li style="float:right"><a onclick="document.getElementById('myTune').play()" href="#">&#128266;</a></li>
-        </ul></nav>
-		</br>
-		<div id='wrapper'>
-			<div id='left'>
-				<div id='player'>
-					<div id='pnum' class='player1'></div>
-					<div id='pname'>Player 1</div>
-				</div>
-			</div>
-			<div id="board"></div>
-			<div id='right'>
-				<div class="tabpanel">
-					<!-- tabs -->
-					<ul class="tabs">
-						<li><a href="#rulesPanel">Rules</a></li>
-						<li><a href="#scoresPanel">HighScores</a></li>
-						<li><a href="#chatPanel">Chat</a></li>
-					</ul>
-					<!-- tab panels -->
-					<div id="rulesPanel">
-						<H2>Rules:</H2>
-						<ul>
-							<li>Players take turns dropping checkers onto 7x6 grid</li>
-							<li>Just click on a column to drop a checker</li> 
-							<li>First player to get 4-in-a-row wins the game</li>
-							<li>Up, down, left, right, and diagonal wins are possible</li>
-						</ul>
-					</div>
-					<div id="scoresPanel">
-					    <H2>HighScores:</H2>
-						<hr>
-					<table>
-						<tr>
-							<th>Ranking</th>
-							<th> Name</th>
-							<th> Won</th>
-							<th> Lost</th>
-						</tr>
-					</table>
-						<div id="scroll" onmouseover="tz()" onmouseout="ks()">
-							<table id="p1">				
-								<tr>
-									<td><font color="yellow">1</font></td>
-									<td><font color="yellow">Mart</font></td>
-									<td><font color="yellow">10</font></td>
-									<td><font color="yellow">2</font></td>
-							
-								</tr>
-								<tr>
-									<td><font color="white">2</font></td>
-									<td><font color="white">Jeff</font></td>
-									<td><font color="white">9</font></td>
-									<td><font color="white">3</font></td>
-								</tr>
-								<tr>
-									<td><font color="brown">3</font></td>
-									<td><font color="brown">James</font></td>
-									<td><font color="brown">9</font></td>
-									<td><font color="brown">4</font></td>
-								</tr>
-								<tr>
-									<td>4</td>
-									<td>Scott</td>
-									<td>8</td>
-									<td>4</td>
-								</tr>
-								<tr>
-									<td>5</td>
-									<td>Lisa</td>
-									<td>7</td>
-									<td>5</td>
-								<tr>
-									<td>6</td>
-									<td>Donna</td>
-									<td>7</td>
-									<td>6</td>
-								</tr>
-								<tr>
-								    <td>7</td>
-									<td>Jun</td>
-									<td>6</td>
-									<td>7</td>
-								</tr>
-								<tr>
-									<td>8</td>
-									<td>John</td>
-									<td>5</td>
-									<td>6</td>
-								</tr>
-							</table>
-							<table id="p2">
-							</table>
-						</div>
-					</div>
-					<div id="chatPanel">
-						<p>A Chat may go here...</p>
-					</div>
-				</div>				
-				<div id='resetButton'>
-					<input onclick="startGame()" id="newGameButton" type="Submit" value="New Game" />
-				</div>
-				<audio id="myTune">
+            <li><a href="Connect4rules.html">Faq</a></li>
+            <li style="float:right"><a href="index.html">Account</a></li>
+            <li style="float:right"><a onclick="document.getElementById('myTune').play()" href="#">&#128266;</a></li>
+        </ul>
+    </nav>
+    <!-- <section> -->
+    </br>
+    <div id='wrapper'>
+        <div id='left'>
+            <div id='player'>
+                <div id='pnum' class='player1'></div>
+                <div id='pname'>Player 1</div>
+            </div>
+        </div>
+        <div id="board"></div>
+        <div id='right'>
+            <div class="tabpanel">
+                <!-- tabs -->
+                <ul class="tabs">
+                    <li><a href="" onclick="showRules()">Quick Rules</a></li>
+                    <li><a href="" onclick="showScore()">HighScores</a></li>
+                    <li><a href="" onclick="showChat()">Chat</a></li>
+                    <li><a href="" onclick="startGame()">New Game</a></li>
+                </ul>
+                <!-- tab panels -->
+                <div id="rulesPanel">
+                    <H2>Rules:</H2>
+                    <ul>
+                        <li>Players take turns dropping checkers onto 7x6 grid</li>
+                        <li>Just click on a column to drop a checker</li>
+                        <li>First player to get 4-in-a-row wins the game</li>
+                        <li>Up, down, left, right, and diagonal wins are possible</li>
+                    </ul>
+                </div>
+                <div id="scoresPanel" style="display:none;">
+                    <H2>HighScores:</H2>
+                    <hr>
+                    <table>
+                        <tr>
+                            <th>Ranking</th>
+                            <th> Name</th>
+                            <th> Won</th>
+                            <th> Lost</th>
+                        </tr>
+                    </table>
+                    <div id="scroll" onmouseover="tz()" onmouseout="ks()">
+                        <table id="p1">
+                            <tr>
+                                <td>
+                                    <font color="yellow">1</font>
+                                </td>
+                                <td>
+                                    <font color="yellow">Mart</font>
+                                </td>
+                                <td>
+                                    <font color="yellow">10</font>
+                                </td>
+                                <td>
+                                    <font color="yellow">2</font>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <font color="white">2</font>
+                                </td>
+                                <td>
+                                    <font color="white">Jeff</font>
+                                </td>
+                                <td>
+                                    <font color="white">9</font>
+                                </td>
+                                <td>
+                                    <font color="white">3</font>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <font color="brown">3</font>
+                                </td>
+                                <td>
+                                    <font color="brown">James</font>
+                                </td>
+                                <td>
+                                    <font color="brown">9</font>
+                                </td>
+                                <td>
+                                    <font color="brown">4</font>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Scott</td>
+                                <td>8</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Lisa</td>
+                                <td>7</td>
+                                <td>5</td>
+                                <tr>
+                                    <td>6</td>
+                                    <td>Donna</td>
+                                    <td>7</td>
+                                    <td>6</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>Jun</td>
+                                    <td>6</td>
+                                    <td>7</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>John</td>
+                                    <td>5</td>
+                                    <td>6</td>
+                                </tr>
+                        </table>
+                        <table id="p2">
+                        </table>
+                    </div>
+                </div>
+                <div id="chatPanel" style="display:none;">
+                    <p>A Chat may go here...</p>
+                </div>
+            </div>
+            <audio id="myTune">
 					<source src="media/audio/theme.wav">
 				</audio>
-				<div id="audio_buttons">
-				<!-- <button onclick="document.getElementById('myTune').play()">Play Music</button> -->
-				<!-- <button onclick="document.getElementById('myTune').pause()" >Pause Music</button> -->
-				<!-- <button onclick="document.getElementById('myTune').pause(); document.getElementById('myTune').currentTime = 0;document.getElementById('myTune').play()">Restart</button> -->
-				</div>
-			</div>
-		</div>
+            <div id="audio_buttons">
+                <!-- <button onclick="document.getElementById('myTune').play()">Play Music</button> -->
+                <!-- <button onclick="document.getElementById('myTune').pause()" >Pause Music</button> -->
+                <!-- <button onclick="document.getElementById('myTune').pause(); document.getElementById('myTune').currentTime = 0;document.getElementById('myTune').play()">Restart</button> -->
+            </div>
+        </div>
+    </div>
+    <!-- </section> -->
 
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-		 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
-		<script src="assets/scripts/template.js"></script>
-		<script src="assets/scripts/scroll.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
+    <script src="assets/scripts/template.js"></script>
+    <script src="assets/scripts/scroll.js"></script>
 
-		<script>
-			startGame()
-		</script>
-	</body>
+    <script>
+        startGame()
+
+        function showRules() {
+            document.getElementById(rulesPanel).style.display == '';
+            document.getElementById(scoresPanel).style.display == 'none';
+            document.getElementById(chatPanel).style.display == 'none';
+        }
+
+        function showScore() {
+            document.getElementById(rulesPanel).style.display == 'none';
+            document.getElementById(scoresPanel).style.display == '';
+            document.getElementById(chatPanel).style.display == 'none';
+        }
+
+        function showChat() {
+            document.getElementById(rulesPanel).style.display == 'none';
+            document.getElementById(scoresPanel).style.display == 'none';
+            document.getElementById(chatPanel).style.display == '';
+        }
+    </script>
+</body>
+
 </html>

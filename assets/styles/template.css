@@ -1,118 +1,148 @@
-#left{
-float:left;
-}
-#right{
-float:left;
+#left {
+    float: left;
 }
 
-#board{
-float:left;
+#right {
+    float: left;
 }
-#pnum{
-	width:100px;
-	height:100px;
+
+#board {
+    float: left;
 }
-#pname{
-	width:100%;
-	text-align:center;
+
+#pnum {
+    width: 100px;
+    height: 100px;
 }
-#scroll{
-    height:150px; 
-    overflow:hidden;
+
+#pname {
+    width: 100%;
+    text-align: center;
 }
+
+#scroll {
+    height: 150px;
+    overflow: hidden;
+}
+
 body {
-  font: 13px/20px Verdana, sans-serif;
-  color: #404040;
-  background: #ADD8E6;
+    font: 13px/20px Verdana, sans-serif;
+    color: #404040;
+    background: #ADD8E6;
 }
 
 table {
-	text-align: center;
-	border-spacing: 10px;
-	font-weight:bold;
-}
-th{
-  width:60px;
-}
-td{
- width:60px;
-}
-.player1{
-	background-image:url('../../media/images/red.png');
-}
-.player2{
-	background-image:url('../../media/images/black.png');
-}
-.free{
-	background-image:none;
+    text-align: center;
+    border-spacing: 10px;
+    font-weight: bold;
 }
 
-.row{
-	clear:both;/* deals with column floats */
+th {
+    width: 60px;
 }
-.row:first-child > .cell{
-	border-top:1px solid #000;
+
+td {
+    width: 60px;
 }
-.cell{
-	border-right:1px solid #000;/* outline grid for visibility*/
-	border-bottom:1px solid #000;
-	float:left; /* or display inline - either would probably work. */
-	cursor:pointer;
-	height:100px;
-	width:100px; 
+
+.player1 {
+    background-image: url('../../media/images/red.png');
 }
+
+.player2 {
+    background-image: url('../../media/images/black.png');
+}
+
+.free {
+    background-image: none;
+}
+
+.row {
+    clear: both;
+    /* deals with column floats */
+}
+
+.row:first-child>.cell {
+    border-top: 1px solid #000;
+}
+
+.cell {
+    border-right: 1px solid #000;
+    /* outline grid for visibility*/
+    border-bottom: 1px solid #000;
+    float: left;
+    /* or display inline - either would probably work. */
+    cursor: pointer;
+    height: 100px;
+    width: 100px;
+}
+
 .cell:first-child {
-	border-left:1px solid #000;
-}
-.black_checker {
-	background-image:url('../../media/images/black.png');
+    border-left: 1px solid #000;
 }
 
-.red_checker{
-	background-image:url('../../media/images/red.png');
+.black_checker {
+    background-image: url('../../media/images/black.png');
 }
+
+.red_checker {
+    background-image: url('../../media/images/red.png');
+}
+
 #audio_buttons {
-     position: absolute; 
-	 top: 0; 
-	 right: 0;
- }
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
 
 /* TABS */
-ul.tabs{
-	list-style:none;
-	margin:0;
-	padding:0}
-ul.tabs li{
-	display:inline
-	}
-ul.tabs li a{
-	background-color:#999;
-	color:#FFF;
-	padding:3px 5px;
-	text-decoration:none}
-ul.tabs li a.selected{
-	background-color:#000}
-ul.tabs li a:hover{
-	background-color:#333
-	}
-div.tabpanel > div{
-	border:1px solid #000;
-	margin-top:2px;
-	padding:5px
-	}
-	
+
+ul.tabs {
+    list-style: none;
+    margin: 0;
+    padding: 0
+}
+
+ul.tabs li {
+    display: inline
+}
+
+ul.tabs li a {
+    background-color: #999;
+    color: #FFF;
+    padding: 3px 5px;
+    text-decoration: none
+}
+
+ul.tabs li a.selected {
+    background-color: #000
+}
+
+ul.tabs li a:hover {
+    background-color: #333
+}
+
+div.tabpanel>div {
+    border: 1px solid #000;
+    margin-top: 2px;
+    padding: 5px
+}
+
 nav {
     background-color: #cfcfcf;
+    border-radius: 15px;
     margin: 0;
-	font-size: 15px;
+    font-size: 15px;
     overflow: hidden;
 }
+
 nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #cfcfcf;
+    background-color: #f3f3f3;
 }
 
 nav li {
@@ -121,23 +151,55 @@ nav li {
 
 nav li a {
     display: block;
-    color: white;
+    color: #555;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
-nav .inactivenav{
+
+nav .inactivenav {
     display: block;
-    color: white;
+    color: #555;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
 nav li a:hover:not(.active) {
-    background-color: #b4ccce;
+    background-color: #cfcfcf;
 }
 
 nav .active {
-    background-color: #527881;
+    background-color: #cfcfcf;
 }
+
+
+/* #navimg {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #f3f3f3;
+} */
+
+section {
+    border-radius: 15px;
+    background-color: #f3f3f3;
+    margin-top: 15px;
+    padding: 15px;
+}
+
+#grid {
+    display: grid;
+    grid-template-columns: 20% 20% 20%;
+}
+
+article {
+    border: black 1px;
+}
+
+
+/* 
+div {
+    background-color: #f3f3f3;
+} */
