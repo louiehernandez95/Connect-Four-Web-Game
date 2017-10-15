@@ -11,10 +11,15 @@
         <ul>
             <li><img style="height:48px; margin-bottom:-4px;" src="media/images/connect_four_grid_mini.png" alt="Connect 4"></li>
             <li class="inactivenav">Welcome Guest</li>
-            <li><a href="game.html">Game</a></li>
+            <li class="dropdown"><a href="game.html">Game</a>
+                <ul class="dropdown-content">
+                    <li><a href="game.html">Local Game</a></li>
+                    <li><a href="gamem.html">Multiplayer Game</a></li>
+                </ul>
+            </li>
             <li><a class="active" href="leaderboard.html">Leaderboard</a></li>
             <li><a href="Connect4rules.html">Faq</a></li>
-            <li style="float:right"><a href="index.html">Account</a></li>
+            <li style="float:right"><a href="index.html">Sign Out</a></li>
             <li style="float:right"><a onclick="document.getElementById('myTune').play()" href="#">&#128266;</a></li>
         </ul>
     </nav>
@@ -37,6 +42,8 @@
                 </div>
             </div>
         </article>
+    </section>
+    <section>
         <article>
             </br>
             <h1>Global Stats:</h1>
