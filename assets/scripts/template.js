@@ -150,7 +150,7 @@ function animateChecker(column, player) {
                 }
             }
         }  else {
-            
+            alert("The Column is full!!");
         }
     }
     swap(NUM_ROWS - 1);
