@@ -102,7 +102,7 @@ function findRow(column, player) {
 
     return (Math.log(temp + 1) / Math.LN2); // next avail row is next sig bit NOT used!
 }
-
+// Taken from https://stackoverflow.com/questions/9419263/playing-audio-with-javascript
 function sound(src) {
     this.sound = document.createElement("audio");
     this.sound.src = src;
@@ -129,8 +129,8 @@ function animateChecker(column, player) {
         var last = '#c' + column + 'r' + (i + 1);
         var next = '#c' + column + 'r' + (i - 1);
         if ($(cell).data('player') == 0) {
-            $(cell).addClass(ckrClass, 100, "linear");
-            $(last).removeClass(ckrClass, 100, "linear");
+            $(cell).addClass(ckrClass);
+            $(last).removeClass(ckrClass);
             i--;
             if ($(next).data('player') == 0) {
                 window.setTimeout(function() { swap(i) }, 50);
