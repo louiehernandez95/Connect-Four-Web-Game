@@ -14,3 +14,6 @@ Group Members:
     Dariusz Jedralski
     Ting Liu
 
+To learn more about express and node:
+
+https://www.tutorialspoint.com/nodejs/nodejs_express_framework.htm
