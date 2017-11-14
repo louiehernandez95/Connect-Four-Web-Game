@@ -5,6 +5,7 @@ app.use(express.static('assets'));
 app.use(express.static('assets/html'));
 app.use(express.static('media'));
 
+
 app.get('/', function (req, res) {
    res.sendfile('index.html');
 })
