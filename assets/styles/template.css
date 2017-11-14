@@ -82,11 +82,11 @@ td {
 }
 
 .black_checker {
-    background-image: url('../../media/images/black.png');
+    background-image: url('../media/images/black.png');
 }
 
 .red_checker {
-    background-image: url('../../media/images/red.png');
+    background-image: url('../media/images/red.png');
 }
 
 #audio_buttons {
