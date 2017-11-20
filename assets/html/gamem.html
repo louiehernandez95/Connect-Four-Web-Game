@@ -4,6 +4,7 @@
 <head>
     <title>Connect 4</title>
     <link rel="stylesheet" type="text/css" href="assets/styles/template.css">
+    <link rel="stylesheet" type="text/css" href="assets/styles/style.css">
 </head>
 
 <body>
@@ -49,7 +50,21 @@
                 <!-- tab panels -->
 
                 <div id="chatPanel">
-                    <p>A Chat may go here...</p>
+                    <ul class="pages">
+                            <li class="chat page">
+                              <div class="chatArea">
+                                <ul class="messages"></ul>
+                              </div>
+                              <input class="inputMessage" placeholder="Type here..."/>
+                            </li>
+                            <li class="login page">
+                              <div class="form">
+                                 <button name="" class="joinChat" type="button" id="joinChat" >
+                                     Join Chat
+                                 </button>
+                              </div>
+                            </li>
+                          </ul>
                 </div>
                 <div id="scoresPanel">
 
@@ -165,6 +180,8 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
     <script src="assets/scripts/template.js"></script>
     <script src="assets/scripts/scroll.js"></script>
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script src="http://localhost:3000/main.js"></script>
 
     <script>
         startGame()
