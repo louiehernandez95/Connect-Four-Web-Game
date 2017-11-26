@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Web Game</title>
-    <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="assets/styles/login.css">
 </head>
 
 <body>
     <section class="container">
-        <center><img src="images/connect_four_grid.jpg" style="height:150px; width:275px "></center>
+        <center><img src="media/images/connect_four_grid.jpg" style="height:150px; width:275px "></center>
         <br> </br>
         <div class="login">
             <h1>Login</h1>
@@ -28,7 +28,7 @@
                 function check(form) /*function to check userid & password*/ {
                     /*the following code checkes whether the entered userid and password are matching*/
                     if (form.login.value == "myuserid" && form.password.value == "mypswrd") {
-                        window.location('html/game.html') /*opens the target page while Id & password matches*/
+                        window.location('assets/html/game.html') /*opens the target page while Id & password matches*/
                     } else {
                         alert("Incorrect Username or Password") /*displays error message*/
 
@@ -36,10 +36,10 @@
                 }
             </script>
             <div class="login-help">
-                <a href="signup.html">Forgot Password?</a>
+                <a href="assets/html/signup.html">Forgot Password?</a>
             </div>
             <div class="login-help">
-                <a href="game.html">Skip For Now</a>
+                <a href="assets/html/game.html">Skip For Now</a>
             </div>
         </div>
 

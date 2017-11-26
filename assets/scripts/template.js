@@ -20,7 +20,7 @@ function draw_grid(rows, columns) {
     for (i = rows - 1; i >= 0; i--) {
         board += "<div class='row' id='row" + i + "'>";
         for (j = 0; j <= columns - 1; j++) {
-            board += "<div class='cell' id='c" + j + "r" + i + "'><img class='square' src='images/square4.png'/></div>";
+            board += "<div class='cell' id='c" + j + "r" + i + "'><img class='square' src='/media/images/square4.png'/></div>";
         }
         board += "</div>";
     }
