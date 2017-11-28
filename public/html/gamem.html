@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Connect 4</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="../styles/game.css">
+	 <link rel="stylesheet" href="../styles/template.css">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><img style="height:48px; margin-bottom:-4px;" src="media/images/connect_four_grid_mini.png" alt="Connect 4"></li>
+            <li class="inactivenav"> Welcome Guest</li>
+            <li class="dropdown"><a class="active" href="html/game.html">Game</a>
+                <ul class="dropdown-content">
+                    <li><a class="active" href="game.html">Local Game</a></li>
+                    <li><a class="active" href="gamem.html">Multiplayer Game</a></li>
+                </ul>
+            </li>
+            <li><a href="html/leaderboard.html">Leaderboard</a></li>
+            <li><a href="html/Connect4rules.html">Faq</a></li>
+            <li style="float:right"><a href="/index.html">Sign Out</a></li>
+            <li style="float:right"><a onclick="document.getElementById('myTune').play()" href="#">&#128266;</a></li>
+        </ul>
+    </nav>
+    <!-- <section> -->
+		
+	<div style= "text-align: center">
+	<div style ="font-size:xx-large; font-weight:bold">Connect Four</div>
+	<div id= "arrows">
+		<span id = "arrow0"></span>
+		<span id = "arrow1"></span>
+		<span id = "arrow2"></span>
+		<span id = "arrow3"></span>
+		<span id = "arrow4"></span>
+		<span id = "arrow5"></span>
+		<span id = "arrow6"></span>
+	</div>
+	<div id = "container"></div>
+	<div id ="whoPlaysMessage" style="padding:10px">Wait for second player...</div>
+	<div id ="winner"></div>
+
+	</div>
+	
+    <script type="text/javascript" src="../scripts/game.js"></script>
+
+            <audio id="myTune">
+					<source src="media/audio/theme.wav">
+				</audio>
+
+ 
+ 
+   
+</body>
+
+</html>
