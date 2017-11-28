@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Group-D-COMP-324/source#readme",
   "dependencies": {
     "express": "^4.16.2",
+    "mongoose": "^4.13.2",
     "serve-static": "^1.13.1"
   }
 }
