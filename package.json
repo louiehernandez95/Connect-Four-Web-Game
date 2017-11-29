@@ -1,26 +1,29 @@
 {
-  "name": "connect-four",
-  "version": "1.0.0",
-  "description": "\"fun connect four game\"",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Group-D-COMP-324/source.git"
-  },
-  "author": "the gang",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Group-D-COMP-324/source/issues"
-  },
-  "homepage": "https://github.com/Group-D-COMP-324/source#readme",
-  "dependencies": {
-    "add": "^2.0.6",
-    "express": "3.x",
-    "mongoose": "^4.13.2",
-    "serve-static": "^1.13.1",
-    "socket.io": "^0.9.19"
-  }
+    "name": "connect-four",
+    "version": "1.0.0",
+    "description": "\"fun connect four game\"",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Group-D-COMP-324/source.git"
+    },
+    "author": "the gang",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Group-D-COMP-324/source/issues"
+    },
+    "homepage": "https://github.com/Group-D-COMP-324/source#readme",
+    "dependencies": {
+        "add": "^2.0.6",
+        "express": "3.x",
+        "mongoose": "^4.13.2",
+        "serve-static": "^1.13.1",
+        "socket.io": "^0.9.19",
+        "express-session": "1.13.0",
+        "passport": "~0.2.0",
+        "passport-local": "~1.0.0"
+    }
 }
