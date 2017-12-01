@@ -10,6 +10,7 @@ var userinfoTotal = {};
 
 mongoose.connect('mongodb://appUser:password33!@ds119446.mlab.com:19446/connect4');
 
+//mongoose.connect('mongodb://localhost/connect');
 // Configuring Passport
 var passport = require('passport');
 var expressSession = require('express-session');
@@ -87,3 +88,27 @@ io.sockets.on('connection', function(socket) {
     });
 
 });
+
+//define Mongoose schema for info
+var UserinfoSchema = mongoose.Schema({
+    //"created": Date,
+    //"note": String
+     "ranking": Number,
+    //"Name": String,
+   // "Psw":String,
+    //"Wins": Number,
+   // "Losses": Number 
+  });
+
+  var Userinfo = mongoose.model("users", UserinfoSchema);
+ 
+
+//json get route - update for mongo
+app.get("/html/info.json", function(req, res) {    
+      
+      Userinfo.find({}, function (error, info) {
+       //add some error checking...
+       res.json(info);
+      // console.log(res.);
+      });
+    });

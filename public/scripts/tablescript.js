@@ -11,7 +11,7 @@ xmlhttp.onreadystatechange = function() {
 	   }
     }
 };
-xmlhttp.open("GET", "data.txt", true);
+xmlhttp.open("GET", "info.json", true);
 xmlhttp.send();
 	
 function getDataRow(h){
@@ -20,7 +20,7 @@ function getDataRow(h){
 	   rankingCell.innerHTML = h.Ranking;//fill in data
 	   row.appendChild(rankingCell);//add row
 	   var nameCell = document.createElement('td');
-	   nameCell.innerHTML = h.name;
+	   nameCell.innerHTML = h.Name;
 	   row.appendChild(nameCell);
 	   var winsCell = document.createElement('td');
 	   winsCell.innerHTML = h.Wins;
