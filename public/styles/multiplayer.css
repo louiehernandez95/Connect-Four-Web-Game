@@ -36,7 +36,19 @@
 	border: 1px solid #000;
     top: 340px;
     right: 320px;
+	background-color: #f3f3f3;
   
+}
+#messages {
+	border: 1px solid #000;
+	background-color: white;
+	text-align: left;
+	height: 150px;
+    overflow-y: auto;
+}
+#chatPanel {
+	text-align:left;
+	background-color: #f3f3f3;
 }
 #left {
     float: left;
@@ -49,16 +61,6 @@
 #board {
     float: left;
 	
-}
-
-#pnum {
-    width: 100px;
-    height: 100px;
-}
-
-#pname {
-    width: 100%;
-    text-align: center;
 }
 
 #scroll {
@@ -138,6 +140,7 @@ div.tabpanel>div {
     padding: 5px;
 	position: fixed;
 	right:350px;
+	background-color: #f3f3f3;
 }
 
 nav {

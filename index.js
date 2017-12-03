@@ -75,7 +75,7 @@ io.sockets.on('connection', function(socket) {
         firstPlayer.client.json.send({ turn: 1 });
         secondPlayer.client.json.send({ turn: 2 });
 
-        //creating a new game, and passing created palyers and functions
+        //creating a new game, and passing created players and functions
         var game = new Game();
         game.create(firstPlayer, secondPlayer, sendMove, sendWin);
 

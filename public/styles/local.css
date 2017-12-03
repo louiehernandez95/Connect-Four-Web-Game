@@ -85,7 +85,10 @@ td {
 ul.tabs {
     list-style: none;
     margin: 0;
-    padding: 0
+    padding: 0;
+	position: fixed;
+	right:520px;
+	top:153px;
 }
 
 ul.tabs li {
@@ -110,7 +113,10 @@ ul.tabs li a:hover {
 div.tabpanel>div {
     border: 1px solid #000;
     margin-top: 2px;
-    padding: 5px
+    padding: 5px;
+	position: fixed;
+	right:300px;
+	background-color: #f3f3f3;
 }
 
 nav {
