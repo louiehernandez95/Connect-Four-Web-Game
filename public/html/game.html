@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Connect 4</title>
+    <link rel="stylesheet" type="text/css" href="../styles/local.css">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><img style="height:48px; margin-bottom:-4px;" src="/media/images/connect_four_grid_mini.png" alt="Connect 4"></li>
+            <li class="inactivenav"> Welcome Guest</li>
+            <li class="dropdown"><a class="active" href="game.html">Game</a>
+                <ul class="dropdown-content">
+                    <li><a class="active" href="game.html">Local Game</a></li>
+                    <li><a class="active" href="gamem.html">Multiplayer Game</a></li>
+                </ul>
+            </li>
+            <li><a href="leaderboard.html">Leaderboard</a></li>
+            <li><a href="Connect4rules.html">Faq</a></li>
+            <li style="float:right"><a href="index.html">Sign Out</a></li>
+            <li style="float:right"><a onclick="document.getElementById('myTune').play()" href="#">&#128266;</a></li>
+        </ul>
+    </nav>
+    <!-- <section> -->
+
+    <section>
+        <h1>Local Play</h1>
+    </section>
+    </br>
+    <div id='wrapper'>
+        <div id='left'>
+            <div id='player'>
+                <div id='pnum' class='player1'></div>
+                <div id='pname'>Player 1</div>
+            </div>
+        </div>
+        <div id="board"></div>
+        <div id='right'>
+            <div class="tabpanel">
+                <!-- tabs -->
+                <ul class="tabs">
+                    <li><a href="" onclick="showRules()">Quick Rules</a></li>
+                    <!-- <li><a href="" onclick="showScore()">HighScores</a></li> -->
+                    <!-- <li><a href="" onclick="showChat()">Chat</a></li> -->
+                    <li><a href="" onclick="startGame()">New Game</a></li>
+                </ul>
+                <!-- tab panels -->
+                <div id="rulesPanel">
+                    <H2>Rules:</H2>
+                    <ul>
+                        <li>Players take turns dropping checkers onto 7x6 grid</li>
+                        <li>Just click on a column to drop a checker</li>
+                        <li>First player to get 4-in-a-row wins the game</li>
+                        <li>Up, down, left, right, and diagonal wins are possible</li>
+                    </ul>
+                </div>
+                
+            </div>
+            <audio id="myTune">
+					<source src="/media/audio/theme.wav">
+				</audio>
+            <div id="audio_buttons">
+                <!-- <button onclick="document.getElementById('myTune').play()">Play Music</button> -->
+                <!-- <button onclick="document.getElementById('myTune').pause()" >Pause Music</button> -->
+                <!-- <button onclick="document.getElementById('myTune').pause(); document.getElementById('myTune').currentTime = 0;document.getElementById('myTune').play()">Restart</button> -->
+            </div>
+        </div>
+    </div>
+    <!-- </section> -->
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="../scripts/local.js"></script>
+    <script src="../scripts/scroll.js"></script>
+
+    <script>
+        startGame()
+
+        function showRules() {
+            document.getElementById(rulesPanel).style.display == '';
+            document.getElementById(scoresPanel).style.display == 'none';
+            document.getElementById(chatPanel).style.display == 'none';
+        }
+
+        function showScore() {
+            document.getElementById(rulesPanel).style.display == 'none';
+            document.getElementById(scoresPanel).style.display == '';
+            document.getElementById(chatPanel).style.display == 'none';
+        }
+
+        function showChat() {
+            document.getElementById(rulesPanel).style.display == 'none';
+            document.getElementById(scoresPanel).style.display == 'none';
+            document.getElementById(chatPanel).style.display == '';
+        }
+    </script>
+</body>
+
+</html>
