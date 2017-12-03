@@ -5,6 +5,8 @@ var port = 3000;
 var Game = require("./game.js");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 var autoIncrement = require("mongoose-auto-increment");
 var userinfoTotal = {};
 var messages = [];
@@ -13,18 +15,30 @@ var sockets = [];
 
 
 var mconnection = mongoose.connect('mongodb://appUser:password33!@ds119446.mlab.com:19446/connect4');
-//var mconnection = mongoose.connect('mongodb://localhost/connect');
+var db = mongoose.connection; //var mconnection = mongoose.connect('mongodb://localhost/connect');
 //initialize autoincrement function for comment id
 autoIncrement.initialize(mconnection);
 
-//mongoose.connect('mongodb://localhost/connect');
-// Configuring Passport
-var passport = require('passport');
-var expressSession = require('express-session');
-app.use(expressSession({ secret: 'mySecretKey' }));
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: false,
+    store: new MongoStore({
+        mongooseConnection: db
+    })
+}));
+
+
+// include routes
+var routes = require('./router.js');
+app.use('/', routes);
+app.use("/public/html", express.static(__dirname + '/public/html'));
+app.use("/public/styles", express.static(__dirname + '/public/styles'));
+app.use("/public/media", express.static(__dirname + '/public/media'));
+
+
 //parse jQuery JSON to useful JS object
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 //defines the first player, the one who waits for the second one to connect
@@ -98,15 +112,15 @@ io.sockets.on('connection', function(socket) {
 
 });
 //messages
-io.sockets.on('connection', function (socket) {
+io.sockets.on('connection', function(socket) {
 
     sockets.push(socket);
 
     socket.emit('messages-available', messages);
 
-    socket.on('add-message', function (data) {
+    socket.on('add-message', function(data) {
         messages.push(data);
-        sockets.forEach(function (socket) {
+        sockets.forEach(function(socket) {
             socket.emit('message-added', data);
         });
     });
@@ -114,25 +128,17 @@ io.sockets.on('connection', function (socket) {
 
 //define Mongoose schema for info
 var UserinfoSchema = mongoose.Schema({
-        "ranking": Number,
-        "Name": String,
-        "Psw":String,
-        "Wins": Number,
-        "Losses": Number 
-  });
+    "ranking": Number,
+    "Name": String,
+    "Psw": String,
+    "Wins": Number,
+    "Losses": Number
+});
 
-  var Userinfo = mongoose.model("users", UserinfoSchema);
- 
+var Userinfo = mongoose.model("users", UserinfoSchema);
 
-//json get route - update for mongo
-app.get("/html/info.json", function(req, res) {    
-      
-      Userinfo.find({}, function (error, info) {
-       //add some error checking...
-       res.json(info);
-      // console.log(res.);
-      });
-    });
+
+
 
 
 //define Mongoose schema for comments
@@ -142,44 +148,10 @@ var CommentSchema = mongoose.Schema({
     "com_name": String,
     "com_date": Date,
     "com_content": String
-  
-  });
-  
-  //model comment
-  //var Comment = mongoose.model("comments", CommentSchema); 
-  CommentSchema.plugin(autoIncrement.plugin, 'comments');
-  var Comment = mconnection.model("comments", CommentSchema);
-  
-  //json get route - update for mongo
- app.get("/html/comments.json", function(req, res) {
-    console.log("for get for get for get");
-    
-    Comment.find({}, function (error, comments) {
-     //add some error checking...
-     res.json(comments); 
-    });
-  });
-  
-  //json post route - update for mongo
- app.post("/html/comments", function(req, res) {
-    
-    console.log("for post for post for post");
 
-    var newComment = new Comment({
-     //"com_id": req.body.com_id,
-     "com_pid": req.body.com_pid,
-     "com_name": req.body.com_name,
-     "com_date": req.body.com_date,
-     "com_content": req.body.com_content
-    });
-    newComment.save(function (error, result) {
-      if (error !== null) {
-        console.log(error);
-        res.send("error reported");
-      } else {
-        Comment.find({}, function (error, result) {
-          res.json(result);
-        })
-      }
-    });
-  });
+});
+
+//model comment
+//var Comment = mongoose.model("comments", CommentSchema); 
+CommentSchema.plugin(autoIncrement.plugin, 'comments');
+var Comment = mconnection.model("comments", CommentSchema);
