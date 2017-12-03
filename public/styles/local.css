@@ -76,6 +76,11 @@ td {
     width: 75px;
 	background-color: white;
 }
+.comment-input {
+	position:fixed;
+	top: 340px;
+	right:410px;
+}
 
 
 
