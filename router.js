@@ -6,13 +6,22 @@ var User = require('./models/user');
 // GET rules page
 router.get('/Connect4rules', function(req, res) {
     console.log(__dirname + '/../html/Connect4rules.html');
-    return res.sendFile('html/Connect4rules.html', { root: __dirname }); //path.join(__dirname + '/../html/signup.html'));
+    //path.join(__dirname + '/../html/signup.html'));
+    if (req.session) {
+        //validate active session
+        return res.sendFile('html/Connect4rules.html', { root: __dirname });
+    }
+    return res.redirect('/');
 });
 
 // GET leaderboard page
 router.get('/leaderboard', function(req, res) {
     console.log(__dirname + '/../html/leaderboard.html');
-    return res.sendFile('html/leaderboard.html', { root: __dirname }); //path.join(__dirname + '/../html/signup.html'));
+    if (req.session) {
+        //validate active session
+        return res.sendFile('html/leaderboard.html', { root: __dirname });
+    }
+    return res.redirect('/');
 });
 
 // GET login page
@@ -46,12 +55,20 @@ router.post('/', function(req, res, next) {
 });
 // GET signup Page
 router.get('/game', function(req, res, next) {
-    return res.sendFile('html/game.html', { root: __dirname });
+    if (req.session) {
+        //validate active session
+        return res.sendFile('html/game.html', { root: __dirname });
+    }
+    return res.redirect('/');
 });
 
 // GET signup Page
 router.get('/gamem', function(req, res, next) {
-    return res.sendFile('html/gamem.html', { root: __dirname });
+    if (req.session) {
+        //validate active session
+        return res.sendFile('html/gamem.html', { root: __dirname });
+    }
+    return res.redirect('/');
 });
 
 // GET signup Page
