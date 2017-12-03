@@ -14,8 +14,13 @@ var sockets = [];
 var path = require("path");
 
 
+<<<<<<< HEAD
+//var mconnection = mongoose.connect('mongodb://appUser:password33!@ds119446.mlab.com:19446/connect4');
+var mconnection = mongoose.connect('mongodb://localhost/connect');
+=======
 var mconnection = mongoose.connect('mongodb://appUser:password33!@ds119446.mlab.com:19446/connect4');
 var db = mongoose.connection; //var mconnection = mongoose.connect('mongodb://localhost/connect');
+>>>>>>> 6d11d7a11aa13ec3fd241b494b0d33583143f4b3
 //initialize autoincrement function for comment id
 autoIncrement.initialize(mconnection);
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -138,6 +143,27 @@ io.sockets.on('connection', function(socket) {
 
 //define Mongoose schema for info
 var UserinfoSchema = mongoose.Schema({
+<<<<<<< HEAD
+        "ranking": Number,
+        "Name": String,
+        "Psw":String,
+        "Wins": Number,
+        "Losses": Number 
+  });
+
+  var Userinfo = mongoose.model("users", UserinfoSchema);
+ 
+
+//json get route - update for mongo
+app.get("/html/info.json", function(req, res) {    
+      //Sort by wins and losses
+       Userinfo.find({}, function (error, info){
+        //add some error checking...
+       res.json(info);
+      // console.log(res.);
+      }).sort({"Wins":-1, "Losses":1});
+    });
+=======
     "ranking": Number,
     "Name": String,
     "Psw": String,
@@ -149,6 +175,7 @@ var Userinfo = mongoose.model("users", UserinfoSchema);
 
 
 
+>>>>>>> 6d11d7a11aa13ec3fd241b494b0d33583143f4b3
 
 
 //define Mongoose schema for comments

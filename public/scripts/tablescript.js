@@ -5,7 +5,7 @@ xmlhttp.onreadystatechange = function() {
   		 
 	   var tbody = document.getElementById('tbMain');
 	   for(var i = 0; i < leadboard.length; i++){
-	     var trow = getDataRow(leadboard[i]);     //return tr data
+	     var trow = getDataRow(leadboard[i],i);     //return tr data
 	     tbody.appendChild(trow);
 	    
 	   }
@@ -14,10 +14,10 @@ xmlhttp.onreadystatechange = function() {
 xmlhttp.open("GET", "info.json", true);
 xmlhttp.send();
 	
-function getDataRow(h){
+function getDataRow(h,i){
 	   var row = document.createElement('tr');//create row
 	   var rankingCell = document.createElement('td');//create coloum Ranking
-	   rankingCell.innerHTML = h.Ranking;//fill in data
+	   rankingCell.innerHTML = i+1;//fill in data
 	   row.appendChild(rankingCell);//add row
 	   var nameCell = document.createElement('td');
 	   nameCell.innerHTML = h.Name;
