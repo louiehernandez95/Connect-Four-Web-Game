@@ -17,7 +17,7 @@ socket.on('messages-available', function (data) {
 // This listens for any individual messages coming back from the server
 socket.on('message-added', addMessage);
 
-// When someone clicks the "Create Message" button, we'll emit the data to the server
+// When someone clicks the "Send" button, we'll emit the data to the server
 $('#create-message').submit(function (e) {
 
     // Don't let the form actually post to the server
