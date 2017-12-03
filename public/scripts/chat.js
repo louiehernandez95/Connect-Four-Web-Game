@@ -1,7 +1,7 @@
 var socket = io.connect('http://localhost:3000');
 
 function addMessage (data) {
-    $('#messages').append('<li class="list-group-item">' +
+    $('#messages').prepend('<li class="list-group-item">' +
         '<h4 class="list-group-item-heading">' + data.name + '</h4>' +
         '<p class="list-group-item-text">' + data.message + '</p>' +
     '</li>');
