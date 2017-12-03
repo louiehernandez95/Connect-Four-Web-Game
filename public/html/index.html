@@ -11,19 +11,19 @@
     <section class="container">
         <center><img src="public/media/images/connect_four_grid.jpg" style="height:150px; width:275px "></center>
         <br> </br>
-        <div class="signup">
-            <h1>Sign Up</h1>
-            <form method="post" action="/signup" name='signup'>
-                <p><input type="text" name="username" value="" placeholder="Username"></p>
-                <p><input type="text" name="email" value="" placeholder="Email"></p>
+        <div class="login">
+            <h1>Login</h1>
+            <form method="post" action="/" name='login'>
+                <p><input type="text" name="login" value="" placeholder="Username or Email"></p>
                 <p><input type="password" name="password" value="" placeholder="Password"></p>
-                <p><input type="password" name="passwordConf" value="" placeholder="Confirm Password"></p>
 
-                <p class="submit"><input type="submit" name="commit" value="Sign Up"></p>
+                <p class="submit"><input type="submit" name="commit" value="Login"></p>
             </form>
-            <script language="javascript">
-            </script>
-            <div class="signup-help">
+
+            <div class="login-help">
+                <a href="/signup">Sign Up</a>
+            </div>
+            <div class="login-help">
                 <a href="/game">Skip For Now</a>
             </div>
         </div>

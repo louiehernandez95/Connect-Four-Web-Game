@@ -17,3 +17,13 @@ Group Members:
 To learn more about express and node:
 
 https://www.tutorialspoint.com/nodejs/nodejs_express_framework.htm
+
+to run project:
+
+in command line
+npm install
+npm start
+
+to stop running
+
+press ctrl + c in command line
