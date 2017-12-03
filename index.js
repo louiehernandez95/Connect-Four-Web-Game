@@ -11,14 +11,17 @@ var autoIncrement = require("mongoose-auto-increment");
 var userinfoTotal = {};
 var messages = [];
 var sockets = [];
-
+var path = require("path");
 
 
 var mconnection = mongoose.connect('mongodb://appUser:password33!@ds119446.mlab.com:19446/connect4');
 var db = mongoose.connection; //var mconnection = mongoose.connect('mongodb://localhost/connect');
 //initialize autoincrement function for comment id
 autoIncrement.initialize(mconnection);
-
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+    // we're connected!
+});
 app.use(session({
     secret: 'secret',
     resave: true,
@@ -28,7 +31,9 @@ app.use(session({
     })
 }));
 
-
+// parse incoming requests
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 // include routes
 var routes = require('./router.js');
 app.use('/', routes);
@@ -37,15 +42,20 @@ app.use("/public/styles", express.static(__dirname + '/public/styles'));
 app.use("/public/media", express.static(__dirname + '/public/media'));
 
 
-//parse jQuery JSON to useful JS object
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-
 //defines the first player, the one who waits for the second one to connect
 var waitingPlayer = null;
 
-//express serves the static files from the public folder
-app.use(express.static(__dirname + '/public'));
+app.use(function(req, res, next) {
+    var err = new Error('File Not Found');
+    err.status = 404;
+    next(err);
+});
+// error handler
+// define as the last app.use callback
+app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.send(err.message);
+});
 
 var io = require('socket.io').listen(app.listen(port));
 
