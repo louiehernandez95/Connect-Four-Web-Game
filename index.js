@@ -12,8 +12,8 @@ var sockets = [];
 
 
 
-var mconnection = mongoose.connect('mongodb://appUser:password33!@ds119446.mlab.com:19446/connect4');
-//var mconnection = mongoose.connect('mongodb://localhost/connect');
+//var mconnection = mongoose.connect('mongodb://appUser:password33!@ds119446.mlab.com:19446/connect4');
+var mconnection = mongoose.connect('mongodb://localhost/connect');
 //initialize autoincrement function for comment id
 autoIncrement.initialize(mconnection);
 
@@ -126,12 +126,12 @@ var UserinfoSchema = mongoose.Schema({
 
 //json get route - update for mongo
 app.get("/html/info.json", function(req, res) {    
-      
-      Userinfo.find({}, function (error, info) {
-       //add some error checking...
+      //Sort by wins and losses
+       Userinfo.find({}, function (error, info){
+        //add some error checking...
        res.json(info);
       // console.log(res.);
-      });
+      }).sort({"Wins":-1, "Losses":1});
     });
 
 
