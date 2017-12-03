@@ -11,8 +11,8 @@
 }
 
 #pnum {
-    width: 100px;
-    height: 100px;
+    width: 75px;
+    height: 75px;
 }
 
 #pname {
@@ -61,23 +61,17 @@ td {
     clear: both;
     /* deals with column floats */
 }
-
+*
 .cell {
     float: left;
     /* or display inline - either would probably work. */
     cursor: pointer;
-    height: 100px;
-    width: 100px;
+    height: 75px;
+    width: 75px;
 	background-color: white;
 }
 
-.black_checker {
-    background-image: url('..media/images/black.png');
-}
 
-.red_checker {
-    background-image: url('../media/images/red.png');
-}
 
 #audio_buttons {
     position: absolute;
@@ -163,14 +157,6 @@ nav .active {
     background-color: #cfcfcf;
 }
 
-
-/* #navimg {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #f3f3f3;
-} */
 
 section {
     border-radius: 15px;
@@ -267,9 +253,5 @@ article {
     overflow: hidden;
 }
 
-/* 
-div {
-    background-color: #f3f3f3;
-} */
 
 

@@ -6,7 +6,7 @@ var vals = function() {
 
 	return this;
 };
-
+var swooshSound;
 var values = vals();
 var container = $("#container");
 var socket = io.connect('http://localhost:3000');
@@ -33,10 +33,6 @@ socket.on("message", function(data) {
 		else {
 			$("#whoPlaysMessage").html("Wait for opponent to play!");
 		}
-
-		for( var i = 0; i < 7; i += 1) {
-			$("#arrow"+i).css("background-color", playerColor);
-		}
 	}
 	//server sends who won, end of the game
 	if (data.win) {
@@ -60,6 +56,8 @@ var fillTheHole = function(col, color) {
 	var index = "#cel" + col  + values.cols[col];
 	$(index).css("background-color", color);
 	values.cols[col] += 1;
+	swooshSound = new sound("../media/audio/swoosh.wav");
+    swooshSound.play();
 };
 var createBoard = function(){
 	for (var i = 5; i >= 0; i -= 1) {
@@ -71,7 +69,21 @@ var createBoard = function(){
 			container.append(tempRow);
 	}
 }
-
+// Taken from https://stackoverflow.com/questions/9419263/playing-audio-with-javascript
+function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "loop");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function() {
+        this.sound.play();
+    }
+    this.stop = function() {
+        this.sound.pause();
+    }
+}
 $(function(){
 	createBoard();
 
@@ -84,26 +96,8 @@ $(function(){
 				fillTheHole(selectedCol, playerColor);
 				sendMove(selectedCol);
 				console.log("after sending ", selectedCol);
-				$("#arrow"+selectedCol).css("visibility","hidden");
-				setTimeout(function(){
-					$("#arrow"+selectedCol).css("visibility","visible");
-				}, 300);
 			}
 		}
 	});
-
-	// on hover over the columns coin (arrow divs) appears on top
-	container.children().hover(
-		function(e) {
-			$("#arrows > span").css("visibility","hidden");
-			var selectedCol = $("#" + e.target.id).data("col");
-			$("#arrow"+selectedCol).css("visibility","visible");
-
-		},
-		function(e){
-			var selectedCol = e.target.id.charAt(3);
-			$("#arrow"+selectedCol).css("visibility","hidden");
-		}
-	);
 
 })
