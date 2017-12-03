@@ -19,6 +19,8 @@ var expressSession = require('express-session');
 app.use(expressSession({ secret: 'mySecretKey' }));
 app.use(passport.initialize());
 app.use(passport.session());
+//parse jQuery JSON to useful JS object
+app.use(bodyParser.urlencoded({ extended: false }));
 
 //defines the first player, the one who waits for the second one to connect
 var waitingPlayer = null;
@@ -128,3 +130,51 @@ app.get("/html/info.json", function(req, res) {
       // console.log(res.);
       });
     });
+
+
+//define Mongoose schema for comments
+var CommentSchema = mongoose.Schema({
+    "com_id": Number,
+    "com_pid": Number,
+    "com_name": String,
+    "com_date": Date,
+    "com_content": String
+  
+  });
+  
+  //model comment
+  var Comment = mongoose.model("comments", CommentSchema); 
+  
+  //json get route - update for mongo
+ app.get("/html/comments.json", function(req, res) {
+    console.log("for get for get for get");
+    
+    Comment.find({}, function (error, comments) {
+     //add some error checking...
+     res.json(comments); 
+    });
+  });
+  
+  //json post route - update for mongo
+ app.post("/html/comments", function(req, res) {
+    
+    console.log("for post for post for post");
+
+    var newComment = new Comment({
+     "com_id": req.body.com_id,
+     "com_pid": req.body.com_pid,
+     "com_name": req.body.com_name,
+     "com_date": req.body.com_date,
+     "com_content": req.body.com_content
+    });
+    newComment.save(function (error, result) {
+      if (error !== null) {
+        console.log(error);
+        res.send("error reported");
+      } else {
+        Comment.find({}, function (error, result) {
+          res.json(result);
+        })
+      }
+    });
+  });

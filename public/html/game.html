@@ -7,6 +7,7 @@
 </head>
 
 <body>
+    <div id="content">
     <nav>
         <ul>
             <li><img style="height:48px; margin-bottom:-4px;" src="/media/images/connect_four_grid_mini.png" alt="Connect 4"></li>
@@ -29,6 +30,7 @@
         <h1>Local Play</h1>
     </section>
     </br>
+ 
     <div id='wrapper'>
         <div id='left'>
             <div id='player'>
@@ -67,12 +69,24 @@
                 <!-- <button onclick="document.getElementById('myTune').pause(); document.getElementById('myTune').currentTime = 0;document.getElementById('myTune').play()">Restart</button> -->
             </div>
         </div>
+    <!--</div>-->
+   <!-- comment output -->
+   <div class="comment-output">
+    </div>
+   <div class="comment-input">
+        <h5>add comment</h5>
+        <textarea rows="10" cols="30"></textarea><button>add</button>
+   </div>
+ 
+
     </div>
     <!-- </section> -->
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
     <script src="../scripts/local.js"></script>
-    <script src="../scripts/scroll.js"></script>
+  
+    <script src="../scripts/comment.js"></script>
 
     <script>
         startGame()
@@ -95,6 +109,7 @@
             document.getElementById(chatPanel).style.display == '';
         }
     </script>
+  </div>
 </body>
 
 </html>

@@ -1,3 +1,5 @@
+
+
 #left {
     float: left;
 }
@@ -8,6 +10,10 @@
 
 #board {
     float: left;
+}
+
+#bottom {
+    float:bottom;
 }
 
 #pnum {
@@ -72,6 +78,29 @@ td {
 }
 
 
+
+
+
+.panel-body{
+    border: 1px solid;
+    padding: 15px;
+   
+   
+   }
+
+.comment-output{
+    
+    width:800px;
+  
+
+}
+
+.comment-input input{
+    
+    width:400px;
+    height: 100px;
+
+}
 
 #audio_buttons {
     position: absolute;
