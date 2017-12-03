@@ -6,6 +6,8 @@ var Game = require("./game.js");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var userinfoTotal = {};
+var messages = [];
+var sockets = [];
 
 
 mongoose.connect('mongodb://appUser:password33!@ds119446.mlab.com:19446/connect4');
@@ -87,6 +89,20 @@ io.sockets.on('connection', function(socket) {
         player.game.onMove(data.move);
     });
 
+});
+//messages
+io.sockets.on('connection', function (socket) {
+
+    sockets.push(socket);
+
+    socket.emit('messages-available', messages);
+
+    socket.on('add-message', function (data) {
+        messages.push(data);
+        sockets.forEach(function (socket) {
+            socket.emit('message-added', data);
+        });
+    });
 });
 
 //define Mongoose schema for info

@@ -8,7 +8,7 @@ var CURR_PLAYER = 1; // current player
 var NUM_COLS = 7; // board dimansions: number of columns
 var NUM_ROWS = 6; // board dimaensions: number of rows
 var swooshSound;
-var themeMusic = new sound("audio/theme.wav");
+var themeMusic = new sound("../media/audio/theme.wav");
 
 /* function to create board
 /* renamed and added parameters to create 
@@ -48,7 +48,7 @@ function changePlayer() {
 
 function setChecker(row, column, player) {
     PLAY_BOARD[player] = setBit64(PLAY_BOARD[player], row, column); // call to update current board status
-    swooshSound = new sound("audio/swoosh.wav");
+    swooshSound = new sound("../media/audio/swoosh.wav");
     swooshSound.play();
     animateChecker(column, player);
 }
@@ -149,9 +149,7 @@ function animateChecker(column, player) {
                     });
                 }
             }
-        }  else {
-            alert("The Column is full!!");
-        }
+        }  
     }
     swap(NUM_ROWS - 1);
 

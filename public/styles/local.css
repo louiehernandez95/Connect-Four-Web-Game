@@ -46,11 +46,11 @@ td {
 }
 
 .player1 {
-    background-image: url('/images/red.png');
+    background-image: url('../media/images/red.png');
 }
 
 .player2 {
-    background-image: url('/images/black.png');
+    background-image: url('../media/images/black.png');
 }
 
 .free {
@@ -62,31 +62,21 @@ td {
     /* deals with column floats */
 }
 
-.row:first-child>.cell {
-    border-top: 1px solid #000;
-}
-
 .cell {
-    border-right: 1px solid #000;
-    /* outline grid for visibility*/
-    border-bottom: 1px solid #000;
     float: left;
     /* or display inline - either would probably work. */
     cursor: pointer;
     height: 100px;
     width: 100px;
-}
-
-.cell:first-child {
-    border-left: 1px solid #000;
+	background-color: white;
 }
 
 .black_checker {
-    background-image: url('/images/black.png');
+    background-image: url('..media/images/black.png');
 }
 
 .red_checker {
-    background-image: url('/images/red.png');
+    background-image: url('../media/images/red.png');
 }
 
 #audio_buttons {

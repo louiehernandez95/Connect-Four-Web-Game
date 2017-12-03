@@ -7,7 +7,7 @@ Game.prototype.create = function (p1, p2, sendMove, sendWin) {
 	this.waitingPlayer = p2;
 	this.sendMove = sendMove;
 	this.sendWin = sendWin;
-	this.cols = [0,0,0,0,0,0,0]; //stores number of coint in each collumn
+	this.cols = [0,0,0,0,0,0,0]; //stores number of coins in each collumn
 	this.board = [];
 	for (var i = 0; i < 7; i += 1) {
 		this.board[i] = [];
