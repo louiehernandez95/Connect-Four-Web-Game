@@ -1,13 +1,24 @@
 var express = require('express');
 var router = express.Router();
 
-var User = require('../models/user');
+var User = require('./models/user');
 
+// GET rules page
+router.get('/Connect4rules', function(req, res) {
+    console.log(__dirname + '/../html/Connect4rules.html');
+    return res.sendFile('html/Connect4rules.html', { root: __dirname }); //path.join(__dirname + '/../html/signup.html'));
+});
+
+// GET leaderboard page
+router.get('/leaderboard', function(req, res) {
+    console.log(__dirname + '/../html/leaderboard.html');
+    return res.sendFile('html/leaderboard.html', { root: __dirname }); //path.join(__dirname + '/../html/signup.html'));
+});
 
 // GET login page
-router.get('/', function(req, res, next) {
-    console.log('Accessing the secret section ...' + __dirname);
-    return res.sendFile(path.join(__dirname + '../html/signup.html'));
+router.get('/', function(req, res) {
+    console.log(__dirname + '/../html/signup.html');
+    return res.sendFile('html/index.html', { root: __dirname }); //path.join(__dirname + '/../html/signup.html'));
 });
 
 
@@ -15,6 +26,41 @@ router.get('/', function(req, res, next) {
 
 //POST login page
 router.post('/', function(req, res, next) {
+    // confirm that user typed same password twice
+    if (req.body.login && req.body.password) {
+        User.authenticate(req.body.login, req.body.password, function(error, user) {
+            if (error || !user) {
+                var err = new Error('Wrong email or password.');
+                err.status = 401;
+                return next(err);
+            } else {
+                req.session.userId = user._id;
+                return res.redirect('/game');
+            }
+        });
+    } else {
+        var err = new Error('All fields required.');
+        err.status = 400;
+        return next(err);
+    }
+});
+// GET signup Page
+router.get('/game', function(req, res, next) {
+    return res.sendFile('html/game.html', { root: __dirname });
+});
+
+// GET signup Page
+router.get('/gamem', function(req, res, next) {
+    return res.sendFile('html/gamem.html', { root: __dirname });
+});
+
+// GET signup Page
+router.get('/signup', function(req, res, next) {
+    return res.sendFile('html/signup.html', { root: __dirname });
+});
+
+// GET signup Page
+router.post('/signup', function(req, res, next) {
     // confirm that user typed same password twice
     if (req.body.password !== req.body.passwordConf) {
         var err = new Error('Passwords do not match.');
@@ -33,6 +79,10 @@ router.post('/', function(req, res, next) {
             username: req.body.username,
             password: req.body.password,
             passwordConf: req.body.passwordConf,
+            wins: 0,
+            losses: 0
+
+
         }
 
         User.create(userData, function(error, user) {
@@ -40,37 +90,16 @@ router.post('/', function(req, res, next) {
                 return next(error);
             } else {
                 req.session.userId = user._id;
-                return res.redirect('/profile');
+                return res.redirect('/game');
             }
         });
 
-    } else if (req.body.logemail && req.body.logpassword) {
-        User.authenticate(req.body.logemail, req.body.logpassword, function(error, user) {
-            if (error || !user) {
-                var err = new Error('Wrong email or password.');
-                err.status = 401;
-                return next(err);
-            } else {
-                req.session.userId = user._id;
-                return res.redirect('/profile');
-            }
-        });
     } else {
         var err = new Error('All fields required.');
         err.status = 400;
         return next(err);
     }
-})
-
-
-// GET signup Page
-router.get('/signup', function(req, res, next) {
-    return res.sendFile(path.join(__dirname + '/html/signup.html'));
-});
-
-// GET signup Page
-router.post('/signup', function(req, res, next) {
-    return res.sendFile(path.join(__dirname + '/html/signup.html'));
+    // return res.sendFile('html/index.html', { root: __dirname });
 });
 
 // GET route after registering

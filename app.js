@@ -43,9 +43,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 
 // include routes
-var routes = require('./routes/router.js');
+var routes = require('./router.js');
 app.use('/', routes);
-
+app.use("/html", express.static(__dirname + '/html'));
 app.use("/styles", express.static(__dirname + '/styles'));
 app.use("/media", express.static(__dirname + '/media'));
 
