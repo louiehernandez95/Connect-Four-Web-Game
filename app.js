@@ -11,7 +11,8 @@ var messages = [];
 var sockets = [];
 var Game = require("./game.js");
 var waitingPlayer = null;
-
+var server = require('http').createServer(app);
+var path = require("path");
 //connect to MongoDB
 mongoose.connect('mongodb://appUser:password33!@ds119446.mlab.com:19446/connect4');
 var db = mongoose.connection;
@@ -63,84 +64,84 @@ app.use(function(err, req, res, next) {
 });
 
 
-var io = require('socket.io')(session); //.listen(app.listen(port));
+//var io = require('socket.io')(server);
 
 var Player = function(client) {
     this.client = client;
 };
 
 //when a player connects
-io.sockets.on('connection', function(socket) {
-    var player = new Player(socket);
+// io.sockets.on('connection', function(socket) {
+//     var player = new Player(socket);
 
-    //sends a new move to the other player
-    var sendMove = function(col) {
-        console.log("send move ", col);
-        player.game.currentPlayer.client.json.send({ move: col });
-    };
+//     //sends a new move to the other player
+//     var sendMove = function(col) {
+//         console.log("send move ", col);
+//         player.game.currentPlayer.client.json.send({ move: col });
+//     };
 
-    //in case of win, sends message to each player with the adequate message
-    var sendWin = function(winner) {
-        var firstPlayerResult,
-            secondPlayerResult;
+//     //in case of win, sends message to each player with the adequate message
+//     var sendWin = function(winner) {
+//         var firstPlayerResult,
+//             secondPlayerResult;
 
-        if (winner == 0) {
-            firstPlayerResult = secondPlayerResult = 'tie';
-        } else {
-            var firstPlayerIsWinner = (winner == firstPlayer);
-            firstPlayerResult = (firstPlayerIsWinner) ? "win" : "lost";
-            secondPlayerResult = (firstPlayerIsWinner) ? "lost" : "win";
-        }
+//         if (winner == 0) {
+//             firstPlayerResult = secondPlayerResult = 'tie';
+//         } else {
+//             var firstPlayerIsWinner = (winner == firstPlayer);
+//             firstPlayerResult = (firstPlayerIsWinner) ? "win" : "lost";
+//             secondPlayerResult = (firstPlayerIsWinner) ? "lost" : "win";
+//         }
 
-        firstPlayer.client.json.send({ win: firstPlayerResult });
-        secondPlayer.client.json.send({ win: secondPlayerResult });
-    }
+//         firstPlayer.client.json.send({ win: firstPlayerResult });
+//         secondPlayer.client.json.send({ win: secondPlayerResult });
+//     }
 
 
-    //the case when the first player is connected, and waits for the second
-    if (waitingPlayer == null) {
-        waitingPlayer = player;
-    }
-    //the second player connects,
-    //waitingPlayer becomes null, so another first player can start another game
-    else {
-        var secondPlayer = player;
-        var firstPlayer = waitingPlayer;
-        waitingPlayer = null;
+//     //the case when the first player is connected, and waits for the second
+//     if (waitingPlayer == null) {
+//         waitingPlayer = player;
+//     }
+//     //the second player connects,
+//     //waitingPlayer becomes null, so another first player can start another game
+//     else {
+//         var secondPlayer = player;
+//         var firstPlayer = waitingPlayer;
+//         waitingPlayer = null;
 
-        //sending order of turns to connected users
-        firstPlayer.client.json.send({ turn: 1 });
-        secondPlayer.client.json.send({ turn: 2 });
+//         //sending order of turns to connected users
+//         firstPlayer.client.json.send({ turn: 1 });
+//         secondPlayer.client.json.send({ turn: 2 });
 
-        //creating a new game, and passing created palyers and functions
-        var game = new Game();
-        game.create(firstPlayer, secondPlayer, sendMove, sendWin);
+//         //creating a new game, and passing created palyers and functions
+//         var game = new Game();
+//         game.create(firstPlayer, secondPlayer, sendMove, sendWin);
 
-        //sending each player information about the game
-        firstPlayer.game = game;
-        secondPlayer.game = game;
-    }
-    //socket waits for the message 'submit-move' to process the sent move
-    socket.on('submit-move', function(data) {
-        console.log('submit-move: ', data);
-        player.game.onMove(data.move);
-    });
+//         //sending each player information about the game
+//         firstPlayer.game = game;
+//         secondPlayer.game = game;
+//     }
+//     //socket waits for the message 'submit-move' to process the sent move
+//     socket.on('submit-move', function(data) {
+//         console.log('submit-move: ', data);
+//         player.game.onMove(data.move);
+//     });
 
-});
-//messages
-io.sockets.on('connection', function(socket) {
+// });
+// //messages
+// io.sockets.on('connection', function(socket) {
 
-    sockets.push(socket);
+//     sockets.push(socket);
 
-    socket.emit('messages-available', messages);
+//     socket.emit('messages-available', messages);
 
-    socket.on('add-message', function(data) {
-        messages.push(data);
-        sockets.forEach(function(socket) {
-            socket.emit('message-added', data);
-        });
-    });
-});
+//     socket.on('add-message', function(data) {
+//         messages.push(data);
+//         sockets.forEach(function(socket) {
+//             socket.emit('message-added', data);
+//         });
+//     });
+// });
 
 // listen on port 3000
 app.listen(3000, function() {
