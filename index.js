@@ -5,12 +5,17 @@ var port = 3000;
 var Game = require("./game.js");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
+var autoIncrement = require("mongoose-auto-increment");
 var userinfoTotal = {};
 var messages = [];
 var sockets = [];
 
 
-mongoose.connect('mongodb://appUser:password33!@ds119446.mlab.com:19446/connect4');
+
+var mconnection = mongoose.connect('mongodb://appUser:password33!@ds119446.mlab.com:19446/connect4');
+//var mconnection = mongoose.connect('mongodb://localhost/connect');
+//initialize autoincrement function for comment id
+autoIncrement.initialize(mconnection);
 
 //mongoose.connect('mongodb://localhost/connect');
 // Configuring Passport
@@ -109,13 +114,11 @@ io.sockets.on('connection', function (socket) {
 
 //define Mongoose schema for info
 var UserinfoSchema = mongoose.Schema({
-    //"created": Date,
-    //"note": String
-     "ranking": Number,
-    //"Name": String,
-   // "Psw":String,
-    //"Wins": Number,
-   // "Losses": Number 
+        "ranking": Number,
+        "Name": String,
+        "Psw":String,
+        "Wins": Number,
+        "Losses": Number 
   });
 
   var Userinfo = mongoose.model("users", UserinfoSchema);
@@ -134,7 +137,7 @@ app.get("/html/info.json", function(req, res) {
 
 //define Mongoose schema for comments
 var CommentSchema = mongoose.Schema({
-    "com_id": Number,
+    //"com_id": Number,
     "com_pid": Number,
     "com_name": String,
     "com_date": Date,
@@ -143,7 +146,9 @@ var CommentSchema = mongoose.Schema({
   });
   
   //model comment
-  var Comment = mongoose.model("comments", CommentSchema); 
+  //var Comment = mongoose.model("comments", CommentSchema); 
+  CommentSchema.plugin(autoIncrement.plugin, 'comments');
+  var Comment = mconnection.model("comments", CommentSchema);
   
   //json get route - update for mongo
  app.get("/html/comments.json", function(req, res) {
@@ -161,7 +166,7 @@ var CommentSchema = mongoose.Schema({
     console.log("for post for post for post");
 
     var newComment = new Comment({
-     "com_id": req.body.com_id,
+     //"com_id": req.body.com_id,
      "com_pid": req.body.com_pid,
      "com_name": req.body.com_name,
      "com_date": req.body.com_date,

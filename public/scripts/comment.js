@@ -12,7 +12,7 @@
         //process travelComments array
         $iComments.forEach(function(item) {
             //com_pid indicated whether there's relay to the any comment. com_pid=0 means no reply. 
-            if(item.com_pid == 0){
+            if(item.com_pid == -1 ){
                 appendToDiv(item);
 
             }
@@ -31,7 +31,7 @@
         var created = new Date();
         //create new comment
 
-        var newComment = {"com_id":8, "com_pid":0, "com_name":"current user", "com_date":created, "com_content":comment_text};
+        var newComment = {"com_pid":-1, "com_name":"current user", "com_date":created, "com_content":comment_text};
 
         console.log("newcomment is:" + newComment.com_date, newComment.com_content);
         //post new comment to server
@@ -69,12 +69,12 @@
 
 ////////////////////////////////////////////////////////
       function jsonToHtml(va){
-      console.log("id = "+ va.com_id);
+      console.log("id = "+ va._id);
       console.log("pid = "+ va.com_pid);
       console.log("content = "+ va.com_content);     
   
       var html = "";     
-      html = '<div class="panel panel-danger" id = "'+va.com_id+'">'+
+      html = '<div class="panel panel-danger" id = "'+va._id+'">'+
          
           '<div class="panel-heading">' +
           '<h3 class="panel-title">' +
@@ -89,8 +89,8 @@
           '<div class="panel-footer" align="left">' +
           '<div align="right">' +
           '<span class="glyphicon glyphicon-send" aria-hidden="true"></span>' +
-          '<textarea class="replyinput" id= "replyin'+va.com_id+'"></textarea>' + 
-          '<small><button type="button" class="replybtn" id= '+va.com_id+' onclick="reply('+va.com_id+');">Reply</button></small>' +
+          '<textarea class="replyinput" id= "replyin'+va._id+'"></textarea>' + 
+          '<small><button type="button" class="replybtn" id= '+va._id+' onclick="reply('+va._id+');">Reply</button></small>' +
           '</div>'+
           '</div>'
           '</div>';
@@ -144,7 +144,10 @@
         var comment_text = $(inputid).val();
         if(comment_text != ""){
         var created = new Date();
-        var newComment = {"com_id":10, "com_pid":b_id, "com_name":"current user", "com_date":created, "com_content":comment_text};
+        //var newComment = {"_id":10, "com_pid":b_id, "com_name":"current user", "com_date":created, "com_content":comment_text};
+        
+        //comment id will be created automatically
+        var newComment = {"com_pid":b_id, "com_name":"current user", "com_date":created, "com_content":comment_text};
         console.log("newcomment is:" + newComment.com_date, newComment.com_content);
         addComments(newComment);       
         
