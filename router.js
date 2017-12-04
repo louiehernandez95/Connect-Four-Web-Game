@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var User = require('./public/models/user');
+var Comment = require('./public/models/commentmodal');
 
 // GET rules page
 router.get('/Connect4rules', function(req, res) {
