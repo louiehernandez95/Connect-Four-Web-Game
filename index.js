@@ -42,7 +42,7 @@ app.use('/', routes);
 app.use("/public/html", express.static(__dirname + '/public/html'));
 app.use("/public/styles", express.static(__dirname + '/public/styles'));
 app.use("/public/media", express.static(__dirname + '/public/media'));
-
+app.use("/public/scripts", express.static(__dirname + '/public/scripts'));
 
 //defines the first player, the one who waits for the second one to connect
 var waitingPlayer = null;
