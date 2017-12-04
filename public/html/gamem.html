@@ -15,7 +15,7 @@
     <nav>
         <ul>
             <li><img style="height:48px; margin-bottom:-4px;" src="public/media/images/connect_four_grid_mini.png" alt="Connect 4"></li>
-            <li class="inactivenav"> Welcome <span id="name" class="name">Guest</span></li>
+            <li class="inactivenav"> Welcome <span id="name" class="name"></span></li>
             <li class="dropdown"><a class="active" href="/game">Game</a>
                 <ul class="dropdown-content">
                     <li><a class="active" href="/game">Local Game</a></li>
@@ -87,14 +87,7 @@
     <!-- Our chat.js file -->
     <script type="text/javascript" src="public/scripts/chat.js"></script>
     <script type="text/javascript" src="public/scripts/multiplayer.js"></script>
-    <script type="text/javascript">
-        fetch('/name').then(function(response) {
-            response.text().then(function(text) {
-                //alert(text);
-                document.getElementById('name').innerHTML = text;
-            });
-        });
-    </script>
+    <script src="public/scripts/getuser.js"></script>
 
     <audio id="myTune">
 					<source src="public/media/audio/theme.wav">
