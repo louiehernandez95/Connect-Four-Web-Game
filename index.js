@@ -27,6 +27,10 @@ db.once('open', function() {
 app.use(session({
     secret: 'secret',
     resave: true,
+    cookie: {
+        secure: false,
+        httpOnly: false
+    },
     saveUninitialized: false,
     store: new MongoStore({
         mongooseConnection: db
@@ -137,9 +141,3 @@ io.sockets.on('connection', function(socket) {
         });
     });
 });
-
-
-
-
-
-

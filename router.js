@@ -138,6 +138,22 @@ router.get('/profile', function(req, res, next) {
         });
 });
 
+
+router.get('/name', function(req, res, next) {
+    User.findById(req.session.userId)
+        .exec(function(error, user) {
+            if (error) {
+                return next(error);
+            } else {
+                if (user === null) {
+                    return res.send('Guest');
+                } else {
+                    return res.send(user.username);
+                }
+            }
+        });
+});
+
 // GET for logout logout
 router.get('/logout', function(req, res, next) {
     if (req.session) {
