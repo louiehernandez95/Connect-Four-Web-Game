@@ -1,6 +1,17 @@
 //load main app logic
 
     "use strict";
+
+    var currentuser;
+
+    fetch('/name',{credentials: "same-origin"}).then(function(response) {
+      console.log("print fetch name process....:")
+
+response.text().then(function(text) {
+    //alert(text);
+    currentuser = text;
+});
+});
     
     function buildComments(response) {
         //create reply button
@@ -31,7 +42,7 @@
         var created = new Date();
         //create new comment
 
-        var newComment = {"com_pid":-1, "com_name":"current user", "com_date":created, "com_content":comment_text};
+        var newComment = {"com_pid":-1, "com_name":currentuser, "com_date":created, "com_content":comment_text};
 
         console.log("newcomment is:" + newComment.com_date, newComment.com_content);
         //post new comment to server
@@ -56,16 +67,18 @@
 
       $.post("comments", newComment, function (response) {
         
-          console.log("server post response returned..." + response.toSource());
-          })
-          //get comments
-           getComments();
+                  console.log("server post response returned..." + response.toSource());
+                })
+                //get comments
+                getComments();
     }    
 
 
-     //load comments on page load
-     getComments();
 
+    //load comments on page load
+    getComments();
+
+////////////////////////////////////////////////////////
       function jsonToHtml(va){
       console.log("id = "+ va._id);
       console.log("pid = "+ va.com_pid);
@@ -93,10 +106,13 @@
           '</div>'
           '</div>';
           
-      return html; 
+      return html;
+  
+  
   
   }
-   
+ 
+  
   function appendToDiv(va){
       var html = jsonToHtml(va);
       $(".comment-output").append(html); 
@@ -106,6 +122,7 @@
   var flag = 0;
   //handle reply button...
   $(".comment-output").on("click", "button.replybtn" , function() {
+
     
       console.log("click reply button");
       var b_id = $(this).attr("id");
@@ -113,10 +130,6 @@
       var inputid ="#"+ "replyin"+ b_id;
       console.log("inputid's id = ", inputid);
 
-      if (checkVisible($(inputid)) === true) {
-        $(".replyinpu").hide();
-      }
-      
       if(flag == 0){
        $(inputid).show();
      // alert(1);
@@ -128,9 +141,10 @@
         var comment_text = $(inputid).val();
         if(comment_text != ""){
         var created = new Date();
-        //var newComment = {"_id":10, "com_pid":b_id, "com_name":"current user", "com_date":created, "com_content":comment_text};        
+        //var newComment = {"_id":10, "com_pid":b_id, "com_name":"current user", "com_date":created, "com_content":comment_text};
+        
         //comment id will be created automatically
-        var newComment = {"com_pid":b_id, "com_name":"current user", "com_date":created, "com_content":comment_text};
+        var newComment = {"com_pid":b_id, "com_name":currentuser, "com_date":created, "com_content":comment_text};
         console.log("newcomment is:" + newComment.com_date, newComment.com_content);
         addComments(newComment);       
         
