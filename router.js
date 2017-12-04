@@ -191,6 +191,7 @@ router.post("/comments", function(req, res) {
             res.send("error reported");
         } else {
             Comment.find({}, function(error, result) {
+                console.log(result);
                 res.json(result);
             })
         }
