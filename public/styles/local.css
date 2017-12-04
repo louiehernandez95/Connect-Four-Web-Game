@@ -1,10 +1,15 @@
 .content{
-
+    height: 100%;
     width:70%;
     margin: 0 auto;
     padding: 20px;
 }
 
+#goto{
+    float: right;
+    font-size: 2em;
+   
+}
 
 #left {
     float: left;
@@ -27,9 +32,6 @@
     margin-bottom: 100px;
 }
 
-#wrapper {
-    float: left;
-}
 
 #inputtext {
     width: 500;
@@ -53,10 +55,11 @@
     overflow: hidden;
 }
 
-body {
+html,body {
     font: 13px/20px Verdana, sans-serif;
     color: #404040;
     background: #dae2e6;
+    height:100%;
 }
 
 table {
