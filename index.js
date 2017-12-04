@@ -15,11 +15,14 @@ var path = require("path");
 
 
 
-var mconnection = mongoose.connect('mongodb://appUser:password33!@ds119446.mlab.com:19446/connect4');
+var db = mongoose.connect('mongodb://appUser:password33!@ds119446.mlab.com:19446/connect4');
+//var db = mongoose.connect('mongodb://localhost/connect');
+
+
 var db = mongoose.connection; //var mconnection = mongoose.connect('mongodb://localhost/connect');
 
 //initialize autoincrement function for comment id
-autoIncrement.initialize(mconnection);
+autoIncrement.initialize(db);
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
     // we're connected!
