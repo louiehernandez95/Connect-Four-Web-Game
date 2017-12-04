@@ -41,24 +41,7 @@
                 </div>
             </div>
         </div>
-
-        <div id="middle">
-            <div id="board"></div>
-
-            <div id="comment">
-                <h3>Leave your comment here:</h3>
-                <hr>
-                <div class="comment-output"></div>
-                <div class="comment-input">
-                    <hr>
-                    <textarea id="inputtext" rows="10" cols="40"></textarea><button>Add Comment</button>
-                </div>
-                
-                <a href="#top" target="_self" id= "goto">Go to Top</a>
-            </div>
-            
-        </div>
-        <div id='right'>
+		<div id='right'>
             <div class="tabpanel">
                 <!-- tabs -->
                 <ul class="tabs">
@@ -76,16 +59,6 @@
                         <li>First player to get 4-in-a-row wins the game</li>
                         <li>Up, down, left, right, and diagonal wins are possible</li>
                     </ul>
-                    <!-- tab panels -->
-                    <div id="rulesPanel">
-                        <H2>Rules:</H2>
-                        <ul>
-                            <li>Players take turns dropping checkers onto 7x6 grid</li>
-                            <li>Just click on a column to drop a checker</li>
-                            <li>First player to get 4-in-a-row wins the game</li>
-                            <li>Up, down, left, right, and diagonal wins are possible</li>
-                        </ul>
-                    </div>
 
                 </div>
                 <audio id="myTune">
@@ -103,6 +76,23 @@
 
 
         </div>
+        <div id="middle">
+            <div id="board"></div>
+
+            <div id="comment">
+                <h3>Leave your comment here:</h3>
+                <hr>
+                <div class="comment-output"></div>
+                <div class="comment-input">
+                    <hr>
+                    <textarea id="inputtext" rows="10" cols="40"></textarea><button>Add Comment</button>
+                </div>
+                
+                <a href="#top" target="_self" id= "goto">Go to Top</a>
+            </div>
+            
+        </div>
+        
         <!-- </section> -->
 
     </div>
@@ -110,7 +100,6 @@
     <!-- </section> -->
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
     <script src="public/scripts/local.js"></script>
     <script src="public/scripts/getuser.js"></script>
     <script src="public/scripts/comment.js"></script>
