@@ -176,7 +176,7 @@ router.get("/info.json", function(req, res) {
         //add some error checking...
         res.json(info);
         // console.log(res.);
-    });
+    }).sort({"wins":-1, "losses":1});
 });
 
 
