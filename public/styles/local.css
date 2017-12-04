@@ -10,27 +10,24 @@
     float: left;
 }
 
-#comment{
-   clear:left;
-  
+#comment {
+    clear: left;
 }
 
-#board{
-    float:left;
-   margin-bottom: 100px;
-
+#board {
+    float: left;
+    margin-bottom: 100px;
 }
 
 #wrapper {
-    float:left;
+    float: left;
 }
 
-#inputtext{
-     width: 500;
-     height: 50;
-     border: 2px solid;
-     border-color: grey;
-
+#inputtext {
+    width: 500;
+    height: 50;
+    border: 2px solid;
+    border-color: grey;
 }
 
 #pnum {
@@ -51,7 +48,7 @@
 body {
     font: 13px/20px Verdana, sans-serif;
     color: #404040;
-    background: #ADD8E6;
+    background: #dae2e6;
 }
 
 table {
@@ -94,36 +91,31 @@ td {
     background-color: white;
 }
 
-.panel-danger{
-    
+.panel-danger {
     margin: 15px;
-   
     padding: 15px;
-   
 }
 
-.panel-title{
+.panel-title {
     border: 1px solid;
     margin: 0;
     border-color: grey;
     padding: 15px;
     background-color: #f7f8bb;
-
 }
 
-.panel-body{
+.panel-body {
     border: 1px solid;
     border-color: grey;
     padding: 15px;
     background-color: #f6f7ee;
-   
-   }
-.panel-footer{
-    border: 1px solid;   
+}
+
+.panel-footer {
+    border: 1px solid;
     border-color: grey;
     padding: 15px;
     background-color: #dbdbd9;
-
 }
 
 .comment-output {
@@ -178,7 +170,7 @@ div.tabpanel>div {
     padding: 5px;
     position: fixed;
     right: 300px;
-    background-color: #f3f3f3;
+    background-color: #ffffff;
 }
 
 nav {
@@ -194,7 +186,7 @@ nav ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #f3f3f3;
+    background-color: #007bc3;
 }
 
 nav li {
@@ -203,7 +195,9 @@ nav li {
 
 nav li a {
     display: block;
-    color: #555;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 17px;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -211,23 +205,28 @@ nav li a {
 
 nav .inactivenav {
     display: block;
-    color: #555;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 17px;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
 nav li a:hover:not(.active) {
-    background-color: #cfcfcf;
+    background-color: #999999;
 }
 
 nav .active {
-    background-color: #cfcfcf;
+    background-color: #999999;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 17px;
 }
 
 section {
     border-radius: 15px;
-    background-color: #f3f3f3;
+    background-color: #ffffff;
     margin-top: 15px;
     padding: 15px;
 }
@@ -306,7 +305,9 @@ article {
 
 .dropdown-content a {
     float: none;
-    color: black;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 17px;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
