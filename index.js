@@ -138,31 +138,8 @@ io.sockets.on('connection', function(socket) {
     });
 });
 
-//define Mongoose schema for info
-var UserinfoSchema = mongoose.Schema({
-
-    "ranking": Number,
-    "Name": String,
-    "Psw": String,
-    "Wins": Number,
-    "Losses": Number
-});
-
-var Userinfo = mongoose.model("users", UserinfoSchema);
 
 
 
-//define Mongoose schema for comments
-var CommentSchema = mongoose.Schema({
-    //"com_id": Number,
-    "com_pid": Number,
-    "com_name": String,
-    "com_date": Date,
-    "com_content": String
 
-});
 
-//model comment
-//var Comment = mongoose.model("comments", CommentSchema); 
-CommentSchema.plugin(autoIncrement.plugin, 'comments');
-var Comment = mconnection.model("comments", CommentSchema);
