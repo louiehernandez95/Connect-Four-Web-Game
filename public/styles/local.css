@@ -6,12 +6,31 @@
     float: left;
 }
 
-#board {
+#middle {
     float: left;
 }
 
-#bottom {
-    float: bottom;
+#comment{
+   clear:left;
+  
+}
+
+#board{
+    float:left;
+   margin-bottom: 100px;
+
+}
+
+#wrapper {
+    float:left;
+}
+
+#inputtext{
+     width: 500;
+     height: 50;
+     border: 2px solid;
+     border-color: grey;
+
 }
 
 #pnum {
@@ -75,15 +94,36 @@ td {
     background-color: white;
 }
 
-.comment-input {
-    position: fixed;
-    top: 340px;
-    right: 410px;
+.panel-danger{
+    
+    margin: 15px;
+   
+    padding: 15px;
+   
 }
 
-.panel-body {
+.panel-title{
     border: 1px solid;
+    margin: 0;
+    border-color: grey;
     padding: 15px;
+    background-color: #f7f8bb;
+
+}
+
+.panel-body{
+    border: 1px solid;
+    border-color: grey;
+    padding: 15px;
+    background-color: #f6f7ee;
+   
+   }
+.panel-footer{
+    border: 1px solid;   
+    border-color: grey;
+    padding: 15px;
+    background-color: #dbdbd9;
+
 }
 
 .comment-output {
@@ -195,6 +235,7 @@ section {
 #grid {
     display: grid;
     grid-template-columns: 20% 20% 20%;
+    text-align: center;
 }
 
 article {

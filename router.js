@@ -153,9 +153,9 @@ router.get('/logout', function(req, res, next) {
 
 
 //json get route - update for mongo
-router.get("/html/info.json", function(req, res) {
+router.get("/info.json", function(req, res) {
 
-    Userinfo.find({}, function(error, info) {
+    User.find({}, function(error, info) {
         //add some error checking...
         res.json(info);
         // console.log(res.);
@@ -164,7 +164,7 @@ router.get("/html/info.json", function(req, res) {
 
 
 //json get route - update for mongo
-router.get("/html/comments.json", function(req, res) {
+router.get("/comments.json", function(req, res) {
     console.log("for get for get for get");
 
     Comment.find({}, function(error, comments) {
@@ -174,7 +174,7 @@ router.get("/html/comments.json", function(req, res) {
 });
 
 //json post route - update for mongo
-router.post("/html/comments", function(req, res) {
+router.post("/comments", function(req, res) {
 
     console.log("for post for post for post");
 

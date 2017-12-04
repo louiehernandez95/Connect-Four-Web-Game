@@ -6,27 +6,49 @@ xmlhttp.onreadystatechange = function() {
 	   var tbody = document.getElementById('tbMain');
 	   for(var i = 0; i < leadboard.length; i++){
 	     var trow = getDataRow(leadboard[i],i);     //return tr data
-	     tbody.appendChild(trow);
+		 tbody.appendChild(trow);
+		 
+		  if(leadboard[i].username== "currentUser"){
+			  displayStauts(leadboard[i],i);
+		  }
 	    
 	   }
     }
 };
 xmlhttp.open("GET", "info.json", true);
 xmlhttp.send();
+
+
+function displayStauts(myrecord, i){
+	  var myranking = i + 1;
+	  var mywins = myrecord.wins;
+	  var mylosses = myrecord.losses;
+
+	  console.log(myranking,mywins,mylosses);
+	  
+	  $("#ranking").append(myranking);
+	  $("#wins").append(mywins);
+	  $("#losses").append(mylosses);
+	
+
+
+}
+
+
 	
 function getDataRow(h,i){
 	   var row = document.createElement('tr');//create row
 	   var rankingCell = document.createElement('td');//create coloum Ranking
 	   rankingCell.innerHTML = i+1;//fill in data
 	   row.appendChild(rankingCell);//add row
-	   var nameCell = document.createElement('td');
-	   nameCell.innerHTML = h.Name;
-	   row.appendChild(nameCell);
+	   var usernameCell = document.createElement('td');
+	   usernameCell.innerHTML = h.username;
+	   row.appendChild(usernameCell);
 	   var winsCell = document.createElement('td');
-	   winsCell.innerHTML = h.Wins;
+	   winsCell.innerHTML = h.wins;
 	   row.appendChild(winsCell);
 	   var lossesCell = document.createElement('td');
-	   lossesCell.innerHTML = h.Losses;
+	   lossesCell.innerHTML = h.losses;
 	   row.appendChild(lossesCell);
 
 	   return row;//return tr data

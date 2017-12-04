@@ -76,16 +76,16 @@
       var html = "";     
       html = '<div class="panel panel-danger" id = "'+va._id+'">'+
          
-          '<div class="panel-heading">' +
-          '<h3 class="panel-title">' +
+          //'<div class="panel-heading">' +
+          '<h4 class="panel-title">' +
           '<div id="show_name">' + 
           '<span class="glyphicon glyphicon-user" aria-hidden="true"></span>' +
           'User：' + va.com_name +
           '<div style="float: right;" id ="show_time">Time:'+va.com_date+'</div>' +
           '</div>' +
-          '</h3>' +
-          '</div>' +          
-          '<div class="panel-body" id="show_content"><div id="show_other"></div>　　　'+va.com_content+'</div>' +          
+          '</h4>' +
+         // '</div>' +          
+          '<div class="panel-body" id="show_content"><div id="show_other"></div>'+va.com_content+'</div>' +          
           '<div class="panel-footer" align="left">' +
           '<div align="right">' +
           '<span class="glyphicon glyphicon-send" aria-hidden="true"></span>' +
