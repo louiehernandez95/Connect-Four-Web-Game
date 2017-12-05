@@ -4,6 +4,10 @@
     margin: 0 auto;
     padding: 20px;
 }
+#rankingtable{
+    
+        margin: 0 0 0 300px;
+    }
 
 #goto{
     float: right;
@@ -41,13 +45,18 @@
 }
 
 #pnum {
+
     width: 75px;
     height: 75px;
+    position: relative;
+    left:150px;  
 }
 
 #pname {
     width: 100%;
     text-align: center;
+    position: relative;
+    left:150px;
 }
 
 #scroll {
@@ -64,16 +73,19 @@ html,body {
 
 table {
     text-align: center;
-    border-spacing: 10px;
+    border-spacing: 30px;
     font-weight: bold;
 }
 
 th {
-    width: 60px;
+    font-size: 1.2em;
+    width: 100px;
+   
 }
 
 td {
-    width: 60px;
+    width: 100px;
+   
 }
 
 .player1 {
@@ -164,7 +176,10 @@ ul.tabs li a {
     background-color: #999;
     color: #FFF;
     padding: 3px 5px;
-    text-decoration: none
+    text-decoration: none;
+    position: relative;
+    left: 200px;
+
 }
 
 ul.tabs li a.selected {
@@ -180,11 +195,10 @@ div.tabpanel>div {
     margin-top: 2px;
     padding: 5px;
     position: absolute;
-	right: 125px;
+	left: 1090px;
     
     background-color: #ffffff;
 }
-
 nav {
     background-color: #cfcfcf;
     border-radius: 15px;
