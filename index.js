@@ -52,7 +52,7 @@ app.use("/public/media", express.static(__dirname + '/public/media'));
 app.use("/public/scripts", express.static(__dirname + '/public/scripts'));
 
 //defines the first player, the one who waits for the second one to connect
-var waitingPlayer = null;
+var WAIT_PLAYER = null;
 
 app.use(function(req, res, next) {
     var err = new Error('File Not Found');
@@ -77,9 +77,9 @@ io.sockets.on('connection', function(socket) {
     var player = new Player(socket);
 
     //sends a new move to the other player
-    var sendMove = function(col) {
-        console.log("send move ", col);
-        player.game.currentPlayer.client.json.send({ move: col });
+    var sendMove = function(column) {
+        console.log("send move ", column);
+        player.game.CURR_PLAYER.client.json.send({ move: column });
     };
 
     //in case of win, sends message to each player with the adequate message
@@ -101,15 +101,15 @@ io.sockets.on('connection', function(socket) {
 
 
     //the case when the first player is connected, and waits for the second
-    if (waitingPlayer == null) {
-        waitingPlayer = player;
+    if (WAIT_PLAYER == null) {
+        WAIT_PLAYER = player;
     }
     //the second player connects,
     //waitingPlayer becomes null, so another first player can start another game
     else {
         var secondPlayer = player;
-        var firstPlayer = waitingPlayer;
-        waitingPlayer = null;
+        var firstPlayer = WAIT_PLAYER;
+        WAIT_PLAYER = null;
 
         //sending order of turns to connected users
         firstPlayer.client.json.send({ turn: 1 });
@@ -130,7 +130,7 @@ io.sockets.on('connection', function(socket) {
     });
 
 });
-//messages
+//Chat for Multipayer
 io.sockets.on('connection', function(socket) {
 
     sockets.push(socket);
