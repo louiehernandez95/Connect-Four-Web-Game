@@ -11,86 +11,85 @@
 </head>
 
 <body>
-  <div class="content">
-    <nav>
-        <ul>
-            <li><img style="height:48px; margin-bottom:-4px;" src="public/media/images/connect_four_grid_mini.png" alt="Connect 4"></li>
-            <li class="inactivenav"> Welcome <span id="name" class="name"></span></li>
-            <li class="dropdown"><a class="active" href="/game">Game</a>
-                <ul class="dropdown-content">
-                    <li><a class="active" href="/game">Local Game</a></li>
-                    <li><a class="active" href="/gamem">Multiplayer Game</a></li>
-                </ul>
-            </li>
-            <li><a href="/leaderboard">Leaderboard</a></li>
-            <li><a href="/Connect4rules">Faq</a></li>
-            <li style="float:right"><a href="/logout">Sign Out</a></li>
-            <li style="float:right"><a onclick="document.getElementById('myTune').play()" href="#">&#128266;</a></li>
-        </ul>
-    </nav>
-    <!-- <section> -->
-    <section>
-        <h1>Online Play</h1>
-    </section>
-    </br>
-	 <div style="text-align: center">
-
-        <div id="container"></div>
-        <div id="whoPlaysMessage" style="padding:10px">Wait for second player...</div>
-        <div id="winner"></div>
-
-        <form id="create-message" class="well row">
-            <fieldset class="col-lg-8 col-offset-2">
-                <div id="chatPanel">
-                    <H2>Connect Four Chat:</H2>
-                </div>
-                <div class="col-lg-8 col-offset-2 row">
-                    <ul id="messages" class="list-group">
-                        <!-- Messages go here -->
+    <div class="content">
+        <nav>
+            <ul>
+                <li><img style="height:48px; margin-bottom:-4px;" src="public/media/images/connect_four_grid_mini.png" alt="Connect 4"></li>
+                <li class="inactivenav"> Welcome <span id="name" class="name"></span></li>
+                <li class="dropdown"><a class="active" href="/game">Game</a>
+                    <ul class="dropdown-content">
+                        <li><a class="active" href="/game">Local Game</a></li>
+                        <li><a class="active" href="/gamem">Multiplayer Game</a></li>
                     </ul>
-                </div>
-                <input type="text" placeholder="Name" id="name" name="name" class="col-lg-12" />
-                <textarea placeholder="Type..." id="message" name="message" class="col-lg-12"></textarea>
-                <input type="submit" id="send" value="Send" class="btn btn-default col-lg-12" />
-            </fieldset>
-        </form>
-    </div>
-    <div id='wrapper'>
-        <div id="board"></div>
-        <div id='right'>
-            <div class="tabpanel">
-                <!-- tabs -->
-                <ul class="tabs">
-                    <li><a href="" onclick="showRules()">Quick Rules</a></li>
+                </li>
+                <li><a href="/leaderboard">Leaderboard</a></li>
+                <li><a href="/Connect4rules">Faq</a></li>
+                <li style="float:right"><a href="/logout">Sign Out</a></li>
+                <li style="float:right"><a onclick="document.getElementById('myTune').play()" href="#">&#128266;</a></li>
+            </ul>
+        </nav>
+        <!-- <section> -->
+        <section>
+            <h1>Online Play</h1>
+        </section>
+        </br>
+        <div style="text-align: center">
 
-                    <li><a href="" onclick="startGame()">New Game</a></li>
-                </ul>
-                <!-- tab panels -->
-                <div id="rulesPanel">
-                    <H2>Rules:</H2>
-                    <ul>
-                        <li>Players take turns dropping checkers onto 7x6 grid</li>
-                        <li>Just click on a column to drop a checker</li>
-                        <li>First player to get 4-in-a-row wins the game</li>
-                        <li>Up, down, left, right, and diagonal wins are possible</li>
+            <div id="container"></div>
+            <div id="whoPlaysMessage" style="padding:10px">Wait for second player...</div>
+            <div id="winner"></div>
+
+            <form id="create-message" class="well row">
+                <fieldset class="col-lg-8 col-offset-2">
+                    <div id="chatPanel">
+                        <H2>Connect Four Chat:</H2>
+                    </div>
+                    <div class="col-lg-8 col-offset-2 row">
+                        <ul id="messages" class="list-group">
+                            <!-- Messages go here -->
+                        </ul>
+                    </div>
+                    <textarea placeholder="Type..." id="message" name="message" class="col-lg-12"></textarea>
+                    <input type="submit" id="send" value="Send" class="btn btn-default col-lg-12" />
+                </fieldset>
+            </form>
+        </div>
+        <div id='wrapper'>
+            <div id="board"></div>
+            <div id='right'>
+                <div class="tabpanel">
+                    <!-- tabs -->
+                    <ul class="tabs">
+                        <li><a href="" onclick="showRules()">Quick Rules</a></li>
+
+                        <li><a href="" onclick="startGame()">New Game</a></li>
                     </ul>
-                </div>
+                    <!-- tab panels -->
+                    <div id="rulesPanel">
+                        <H2>Rules:</H2>
+                        <ul>
+                            <li>Players take turns dropping checkers onto 7x6 grid</li>
+                            <li>Just click on a column to drop a checker</li>
+                            <li>First player to get 4-in-a-row wins the game</li>
+                            <li>Up, down, left, right, and diagonal wins are possible</li>
+                        </ul>
+                    </div>
 
-            </div>
-            <audio id="myTune">
+                </div>
+                <audio id="myTune">
 					<source src="public/media/audio/theme.wav">
 				</audio>
 
+            </div>
         </div>
-    </div>
 
-   
-    <!-- Our chat.js file -->
-    <script type="text/javascript" src="public/scripts/chat.js"></script>
-    <script type="text/javascript" src="public/scripts/multiplayer.js"></script>
-    <script src="public/scripts/getuser.js"></script>
 
-    <audio id="myTune">
+        <!-- Our chat.js file -->
+        <script type="text/javascript" src="public/scripts/chat.js"></script>
+        <script type="text/javascript" src="public/scripts/multiplayer.js"></script>
+        <script src="public/scripts/getuser.js"></script>
+
+        <audio id="myTune">
 					<source src="public/media/audio/theme.wav">
 				</audio>
 
