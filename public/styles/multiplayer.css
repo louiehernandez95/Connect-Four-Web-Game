@@ -32,7 +32,7 @@
     height: 468px;
     padding: 10px;
     position: relative;
-    left: 130px;
+    left: 0px;
     background-color: yellow;
     
 }
@@ -41,8 +41,8 @@
     position: relative;
     border: 1px solid #000;
     width: 30%;
-    left:870px;
-    bottom: 360px;
+    left:650px;
+    bottom: 345px;
     background-color: #ffffff;
 }
 
@@ -120,9 +120,9 @@ ul.tabs {
     list-style: none;
     margin: 0;
     padding: 0;
-    position: fixed;
-    right: 570px;
-    top: 180px;
+    position: relative;
+    left: 650px;
+	bottom: 825px;
 }
 
 ul.tabs li {
@@ -148,8 +148,9 @@ div.tabpanel>div {
     border: 1px solid #000;
     margin-top: 10px;
     padding: 5px;
-    position: fixed;
-    right: 350px;
+    position: relative;
+    left: 650px;
+	bottom:835px;
     background-color: #ffffff;
 }
 

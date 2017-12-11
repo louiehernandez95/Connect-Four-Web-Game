@@ -54,7 +54,7 @@ var fillTheHole = function(column, color) {
     var index = "#cell" + column + values.columns[column];
     $(index).css("background-color", color);
     values.columns[column] += 1;
-    swooshSound = new sound("audio/swoosh.wav");
+    swooshSound = new sound("public/media/audio/swoosh.wav");
     swooshSound.play();
 };
 var draw_grid = function() {
