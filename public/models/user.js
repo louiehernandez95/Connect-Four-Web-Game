@@ -61,6 +61,7 @@ UserSchema.pre('save', function(next) {
             return next(err);
         }
         user.password = hash;
+        user.passwordConf = ""; //remove confirmation
         next();
     })
 });
